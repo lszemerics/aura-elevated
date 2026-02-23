@@ -5,12 +5,13 @@ import GuestHouseSection from "@/components/GuestHouseSection";
 import GallerySection from "@/components/GallerySection";
 import HouseRulesSection from "@/components/HouseRulesSection";
 import Footer from "@/components/Footer";
+import { LangProvider, type Lang } from "@/lib/i18n";
 
 type Section = "house" | "gallery" | "rules";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<Section>("house");
-  const [lang, setLang] = useState<"hu" | "en">("hu");
+  const [lang, setLang] = useState<Lang>("hu");
 
   const handleSectionChange = (section: Section) => {
     setActiveSection(section);
@@ -40,21 +41,23 @@ const Index = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-background">
-      <Header
-        activeSection={activeSection}
-        onSectionChange={handleSectionChange}
-        lang={lang}
-        onLangChange={setLang}
-      />
-      <main>
-        <HeroSection />
-        <GuestHouseSection />
-        <GallerySection />
-        <HouseRulesSection />
-      </main>
-      <Footer />
-    </div>
+    <LangProvider value={lang}>
+      <div className="min-h-screen bg-background">
+        <Header
+          activeSection={activeSection}
+          onSectionChange={handleSectionChange}
+          lang={lang}
+          onLangChange={setLang}
+        />
+        <main>
+          <HeroSection />
+          <GuestHouseSection />
+          <GallerySection />
+          <HouseRulesSection />
+        </main>
+        <Footer />
+      </div>
+    </LangProvider>
   );
 };
 

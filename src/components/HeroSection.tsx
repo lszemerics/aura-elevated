@@ -1,6 +1,11 @@
 import heroImage from "@/assets/hero-house.jpg";
+import { useLang } from "@/lib/i18n";
+import { translations, pick } from "@/lib/translations";
 
 const HeroSection = () => {
+  const lang = useLang();
+  const t = translations.hero;
+
   return (
     <section className="relative h-screen w-full overflow-hidden">
       <img
@@ -21,14 +26,13 @@ const HeroSection = () => {
           AURA
         </h1>
         <p className="font-display text-lg md:text-2xl text-primary-foreground/90 tracking-[0.3em] uppercase mt-2 animate-fade-in" style={{ animationDelay: "0.4s" }}>
-          Vendégház
+          {pick(t.type, lang)}
         </p>
         <div className="mt-8 w-12 h-px bg-primary-foreground/50 animate-fade-in" style={{ animationDelay: "0.6s" }} />
         <p className="font-body text-sm text-primary-foreground/70 mt-4 max-w-md animate-fade-in" style={{ animationDelay: "0.8s" }}>
-          Hangulatos, téliesített családi nyaraló Révfülöp szívében
+          {pick(t.subtitle, lang)}
         </p>
       </div>
-      {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-fade-in" style={{ animationDelay: "1.2s" }}>
         <div className="w-px h-12 bg-primary-foreground/40 mx-auto" />
       </div>
