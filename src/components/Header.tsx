@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useLang } from "@/lib/i18n";
+import { translations, pick } from "@/lib/translations";
 
 type Section = "house" | "gallery" | "rules";
 
@@ -9,14 +11,17 @@ interface HeaderProps {
   onLangChange: (lang: "hu" | "en") => void;
 }
 
-const navItems: { key: Section; label: string }[] = [
-  { key: "house", label: "Aura Vendégház" },
-  { key: "gallery", label: "Galéria" },
-  { key: "rules", label: "Házirend" },
-];
+const navKeys: Section[] = ["house", "gallery", "rules"];
 
 const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const l = useLang();
+
+  const navLabels: Record<Section, string> = {
+    house: pick(translations.nav.house, l),
+    gallery: pick(translations.nav.gallery, l),
+    rules: pick(translations.nav.rules, l),
+  };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-background/90 backdrop-blur-md border-b border-border">
@@ -44,17 +49,17 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-10 font-body text-sm tracking-[0.2em] uppercase">
-          {navItems.map((item) => (
+          {navKeys.map((key) => (
             <button
-              key={item.key}
-              onClick={() => onSectionChange(item.key)}
+              key={key}
+              onClick={() => onSectionChange(key)}
               className={`py-1 transition-colors border-b-2 ${
-                activeSection === item.key
+                activeSection === key
                   ? "border-foreground text-foreground"
                   : "border-transparent text-muted-foreground hover:text-foreground"
               }`}
             >
-              {item.label}
+              {navLabels[key]}
             </button>
           ))}
         </nav>
@@ -75,13 +80,13 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
       {mobileOpen && (
         <div className="md:hidden bg-background border-b border-border px-6 py-4 animate-fade-in">
           <nav className="flex flex-col gap-4 font-body text-sm tracking-[0.2em] uppercase">
-            {navItems.map((item) => (
+            {navKeys.map((key) => (
               <button
-                key={item.key}
-                onClick={() => { onSectionChange(item.key); setMobileOpen(false); }}
-                className={`text-left ${activeSection === item.key ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+                key={key}
+                onClick={() => { onSectionChange(key); setMobileOpen(false); }}
+                className={`text-left ${activeSection === key ? "text-foreground font-semibold" : "text-muted-foreground"}`}
               >
-                {item.label}
+                {navLabels[key]}
               </button>
             ))}
           </nav>
