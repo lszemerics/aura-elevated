@@ -1,11 +1,19 @@
 import { useState } from "react";
 
+type Section = "house" | "gallery" | "rules";
+
 interface HeaderProps {
-  activeSection: "house" | "rules";
-  onSectionChange: (section: "house" | "rules") => void;
+  activeSection: Section;
+  onSectionChange: (section: Section) => void;
   lang: "hu" | "en";
   onLangChange: (lang: "hu" | "en") => void;
 }
+
+const navItems: { key: Section; label: string }[] = [
+  { key: "house", label: "Aura Vendégház" },
+  { key: "gallery", label: "Galéria" },
+  { key: "rules", label: "Házirend" },
+];
 
 const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -36,26 +44,19 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 
         {/* Navigation */}
         <nav className="hidden md:flex items-center gap-10 font-body text-sm tracking-[0.2em] uppercase">
-          <button
-            onClick={() => onSectionChange("house")}
-            className={`py-1 transition-colors border-b-2 ${
-              activeSection === "house"
-                ? "border-foreground text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Aura Vendégház
-          </button>
-          <button
-            onClick={() => onSectionChange("rules")}
-            className={`py-1 transition-colors border-b-2 ${
-              activeSection === "rules"
-                ? "border-foreground text-foreground"
-                : "border-transparent text-muted-foreground hover:text-foreground"
-            }`}
-          >
-            Házirend
-          </button>
+          {navItems.map((item) => (
+            <button
+              key={item.key}
+              onClick={() => onSectionChange(item.key)}
+              className={`py-1 transition-colors border-b-2 ${
+                activeSection === item.key
+                  ? "border-foreground text-foreground"
+                  : "border-transparent text-muted-foreground hover:text-foreground"
+              }`}
+            >
+              {item.label}
+            </button>
+          ))}
         </nav>
 
         {/* Mobile menu button */}
@@ -74,18 +75,15 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
       {mobileOpen && (
         <div className="md:hidden bg-background border-b border-border px-6 py-4 animate-fade-in">
           <nav className="flex flex-col gap-4 font-body text-sm tracking-[0.2em] uppercase">
-            <button
-              onClick={() => { onSectionChange("house"); setMobileOpen(false); }}
-              className={activeSection === "house" ? "text-foreground font-semibold text-left" : "text-muted-foreground text-left"}
-            >
-              Aura Vendégház
-            </button>
-            <button
-              onClick={() => { onSectionChange("rules"); setMobileOpen(false); }}
-              className={activeSection === "rules" ? "text-foreground font-semibold text-left" : "text-muted-foreground text-left"}
-            >
-              Házirend
-            </button>
+            {navItems.map((item) => (
+              <button
+                key={item.key}
+                onClick={() => { onSectionChange(item.key); setMobileOpen(false); }}
+                className={`text-left ${activeSection === item.key ? "text-foreground font-semibold" : "text-muted-foreground"}`}
+              >
+                {item.label}
+              </button>
+            ))}
           </nav>
         </div>
       )}

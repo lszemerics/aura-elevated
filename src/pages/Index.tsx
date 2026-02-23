@@ -2,16 +2,19 @@ import { useState, useEffect } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import GuestHouseSection from "@/components/GuestHouseSection";
+import GallerySection from "@/components/GallerySection";
 import HouseRulesSection from "@/components/HouseRulesSection";
 import Footer from "@/components/Footer";
 
+type Section = "house" | "gallery" | "rules";
+
 const Index = () => {
-  const [activeSection, setActiveSection] = useState<"house" | "rules">("house");
+  const [activeSection, setActiveSection] = useState<Section>("house");
   const [lang, setLang] = useState<"hu" | "en">("hu");
 
-  const handleSectionChange = (section: "house" | "rules") => {
+  const handleSectionChange = (section: Section) => {
     setActiveSection(section);
-    const el = document.getElementById(section === "house" ? "house" : "rules");
+    const el = document.getElementById(section);
     if (el) {
       el.scrollIntoView({ behavior: "smooth" });
     }
@@ -19,11 +22,18 @@ const Index = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      const rulesEl = document.getElementById("rules");
-      if (rulesEl) {
-        const rect = rulesEl.getBoundingClientRect();
-        setActiveSection(rect.top < window.innerHeight / 2 ? "rules" : "house");
+      const sections: Section[] = ["rules", "gallery", "house"];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight / 2) {
+            setActiveSection(id);
+            return;
+          }
+        }
       }
+      setActiveSection("house");
     };
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
@@ -40,6 +50,7 @@ const Index = () => {
       <main>
         <HeroSection />
         <GuestHouseSection />
+        <GallerySection />
         <HouseRulesSection />
       </main>
       <Footer />
