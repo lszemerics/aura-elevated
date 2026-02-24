@@ -14,13 +14,13 @@ const Footer = () => {
           <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/60 mb-8">{pick(t.subtitle, lang)}</p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
-            <a href="mailto:Eniko.Vofkori@iconplc.com" className="flex items-center gap-2 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+            <a href="mailto:aura.vofi@gmail.com" className="flex items-center gap-2 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
               <Mail className="w-4 h-4" strokeWidth={1.5} />
-              Eniko.Vofkori@iconplc.com
+              aura.vofi@gmail.com
             </a>
-            <a href="tel:+36305448908" className="flex items-center gap-2 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
+            <a href="tel:+36205098419" className="flex items-center gap-2 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
               <Phone className="w-4 h-4" strokeWidth={1.5} />
-              +36 30 544 8908
+              +36 20 509 8419
             </a>
           </div>
 
