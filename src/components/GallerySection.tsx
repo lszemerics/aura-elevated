@@ -13,6 +13,8 @@ import galleryBedroom1 from "@/assets/gallery-bedroom-1.jpg";
 import galleryBedroom2 from "@/assets/gallery-bedroom-2.jpg";
 import galleryBedroom3 from "@/assets/gallery-bedroom-3.jpg";
 import galleryBedroom4 from "@/assets/gallery-bedroom-4.jpg";
+import galleryLiving2 from "@/assets/gallery-living-2.jpg";
+import galleryLiving4 from "@/assets/gallery-living-4.jpg";
 import galleryBathroom1 from "@/assets/gallery-bathroom-1.jpg";
 import galleryBathroom2 from "@/assets/gallery-bathroom-2.jpg";
 
@@ -24,6 +26,8 @@ const imageSources = [
   { src: galleryExterior2, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: interiorLiving, category: "living" as const, span: "md:col-span-2 md:row-span-1" },
   { src: interiorAttic, category: "living" as const, span: "md:col-span-1 md:row-span-2" },
+  { src: galleryLiving2, category: "living" as const, span: "md:col-span-1 md:row-span-1" },
+  { src: galleryLiving4, category: "living" as const, span: "md:col-span-1 md:row-span-1" },
   { src: gardenImg, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom1, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom2, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
