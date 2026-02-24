@@ -11,6 +11,8 @@ import interiorAttic from "@/assets/interior-attic.jpg";
 import gardenImg from "@/assets/garden.jpg";
 import galleryBedroom1 from "@/assets/gallery-bedroom-1.jpg";
 import galleryBedroom2 from "@/assets/gallery-bedroom-2.jpg";
+import galleryBedroom3 from "@/assets/gallery-bedroom-3.jpg";
+import galleryBedroom4 from "@/assets/gallery-bedroom-4.jpg";
 import galleryBathroom1 from "@/assets/gallery-bathroom-1.jpg";
 import galleryBathroom2 from "@/assets/gallery-bathroom-2.jpg";
 
@@ -25,6 +27,8 @@ const imageSources = [
   { src: gardenImg, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom1, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom2, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
+  { src: galleryBedroom3, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
+  { src: galleryBedroom4, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBathroom1, category: "bathroom" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBathroom2, category: "bathroom" as const, span: "md:col-span-2 md:row-span-1" },
 ];
