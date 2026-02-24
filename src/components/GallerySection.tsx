@@ -6,6 +6,9 @@ import { translations, pick } from "@/lib/translations";
 import heroHouse from "@/assets/hero-house.jpg";
 import galleryExterior1 from "@/assets/gallery-exterior-1.jpg";
 import galleryExterior2 from "@/assets/gallery-exterior-2.jpg";
+import galleryExterior3 from "@/assets/gallery-exterior-3.jpg";
+import galleryExterior4 from "@/assets/gallery-exterior-4.jpg";
+import galleryExterior5 from "@/assets/gallery-exterior-5.jpg";
 import interiorLiving from "@/assets/interior-living.jpg";
 import interiorAttic from "@/assets/interior-attic.jpg";
 import gardenImg from "@/assets/garden.jpg";
@@ -24,11 +27,14 @@ const imageSources = [
   { src: heroHouse, category: "exterior" as const, span: "md:col-span-2 md:row-span-2" },
   { src: galleryExterior1, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryExterior2, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
+  { src: gardenImg, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
+  { src: galleryExterior3, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
+  { src: galleryExterior4, category: "exterior" as const, span: "md:col-span-1 md:row-span-2" },
+  { src: galleryExterior5, category: "exterior" as const, span: "md:col-span-2 md:row-span-1" },
   { src: interiorLiving, category: "living" as const, span: "md:col-span-2 md:row-span-1" },
   { src: interiorAttic, category: "living" as const, span: "md:col-span-1 md:row-span-2" },
   { src: galleryLiving2, category: "living" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryLiving4, category: "living" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: gardenImg, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom1, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom2, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryBedroom3, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
