@@ -131,6 +131,8 @@ export const translations = {
       { hu: "Terasz és kert naplementében", en: "Terrace and garden at sunset" },
       { hu: "Nappali és konyha", en: "Living room and kitchen" },
       { hu: "Tetőtér – vetítő és biliárd", en: "Loft – projector and billiards" },
+      { hu: "Nappali – étkezőből nézve", en: "Living room – from dining area" },
+      { hu: "Tetőtér – pihenőzóna", en: "Loft – lounge area" },
       { hu: "Kert és grillező", en: "Garden and barbecue" },
       { hu: "Hálószoba – kék fal, francia ágy", en: "Bedroom – teal accent wall, king bed" },
       { hu: "Hálószoba – mustár függönyök", en: "Bedroom – mustard curtains" },
