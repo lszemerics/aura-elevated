@@ -11,7 +11,6 @@ import galleryExterior4 from "@/assets/gallery-exterior-4.jpg";
 import galleryExterior5 from "@/assets/gallery-exterior-5.jpg";
 import interiorLiving from "@/assets/interior-living.jpg";
 import interiorAttic from "@/assets/interior-attic.jpg";
-import gardenImg from "@/assets/garden.jpg";
 import galleryBedroom1 from "@/assets/gallery-bedroom-1.jpg";
 import galleryBedroom2 from "@/assets/gallery-bedroom-2.jpg";
 import galleryBedroom3 from "@/assets/gallery-bedroom-3.jpg";
@@ -27,7 +26,6 @@ const imageSources = [
   { src: heroHouse, category: "exterior" as const, span: "md:col-span-2 md:row-span-2" },
   { src: galleryExterior1, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryExterior2, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: gardenImg, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryExterior3, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
   { src: galleryExterior4, category: "exterior" as const, span: "md:col-span-1 md:row-span-2" },
   { src: galleryExterior5, category: "exterior" as const, span: "md:col-span-2 md:row-span-1" },
