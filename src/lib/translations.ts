@@ -129,7 +129,6 @@ export const translations = {
       { hu: "A ház kívülről – homlokzat", en: "House exterior – facade" },
       { hu: "Kert – sziklakert felülről", en: "Garden – rock garden from above" },
       { hu: "Kert – ösvény nyáron", en: "Garden – pathway in summer" },
-      { hu: "Kert és grillező", en: "Garden and barbecue" },
       { hu: "Kert – ösvény és sziklák", en: "Garden – pathway and rocks" },
       { hu: "A ház a kertből nézve", en: "House from the garden" },
       { hu: "A ház elölnézetből", en: "House – front view" },
