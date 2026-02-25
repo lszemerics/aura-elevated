@@ -23,23 +23,37 @@ import galleryBathroom2 from "@/assets/gallery-bathroom-2.jpg";
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 
 const imageSources = [
-  { src: heroHouse, category: "exterior" as const, span: "md:col-span-2 md:row-span-2" },
-  { src: galleryExterior1, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryExterior2, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryExterior3, category: "exterior" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryExterior4, category: "exterior" as const, span: "md:col-span-1 md:row-span-2" },
-  { src: galleryExterior5, category: "exterior" as const, span: "md:col-span-2 md:row-span-1" },
-  { src: interiorLiving, category: "living" as const, span: "md:col-span-2 md:row-span-1" },
-  { src: interiorAttic, category: "living" as const, span: "md:col-span-1 md:row-span-2" },
-  { src: galleryLiving2, category: "living" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryLiving4, category: "living" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryBedroom1, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryBedroom2, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryBedroom3, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryBedroom4, category: "rooms" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryBathroom1, category: "bathroom" as const, span: "md:col-span-1 md:row-span-1" },
-  { src: galleryBathroom2, category: "bathroom" as const, span: "md:col-span-2 md:row-span-1" },
+  { src: heroHouse, category: "exterior" as const },
+  { src: galleryExterior1, category: "exterior" as const },
+  { src: galleryExterior2, category: "exterior" as const },
+  { src: galleryExterior3, category: "exterior" as const },
+  { src: galleryExterior4, category: "exterior" as const },
+  { src: galleryExterior5, category: "exterior" as const },
+  { src: interiorLiving, category: "living" as const },
+  { src: interiorAttic, category: "living" as const },
+  { src: galleryLiving2, category: "living" as const },
+  { src: galleryLiving4, category: "living" as const },
+  { src: galleryBedroom1, category: "rooms" as const },
+  { src: galleryBedroom2, category: "rooms" as const },
+  { src: galleryBedroom3, category: "rooms" as const },
+  { src: galleryBedroom4, category: "rooms" as const },
+  { src: galleryBathroom1, category: "bathroom" as const },
+  { src: galleryBathroom2, category: "bathroom" as const },
 ];
+
+// Returns span classes based on position within the filtered set
+function getSpan(index: number, total: number): string {
+  if (total <= 3) return index === 0 ? "md:col-span-2 md:row-span-1" : "md:col-span-1 md:row-span-1";
+  if (total === 4) return index === 0 ? "md:col-span-2 md:row-span-1" : "md:col-span-1 md:row-span-1";
+  if (total <= 6) {
+    if (index === 0) return "md:col-span-2 md:row-span-2";
+    return "md:col-span-1 md:row-span-1";
+  }
+  // 7+ images: first one large, rest fill naturally
+  if (index === 0) return "md:col-span-2 md:row-span-2";
+  if (index === 5) return "md:col-span-2 md:row-span-1";
+  return "md:col-span-1 md:row-span-1";
+}
 
 const categoryKeys: Category[] = ["all", "exterior", "living", "rooms", "bathroom"];
 
@@ -108,7 +122,7 @@ const GallerySection = () => {
           {filtered.map((img, i) => (
             <div
               key={img.src}
-              className={`relative overflow-hidden rounded cursor-pointer group ${img.span}`}
+              className={`relative overflow-hidden rounded cursor-pointer group ${getSpan(i, filtered.length)}`}
               onClick={() => openLightbox(i)}
             >
               <img
