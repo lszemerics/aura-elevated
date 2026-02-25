@@ -104,7 +104,7 @@ const GallerySection = () => {
       </div>
 
       <div className="container mx-auto px-6 pb-20 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 auto-rows-[280px]">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-flow-dense gap-3 auto-rows-[280px]">
           {filtered.map((img, i) => (
             <div
               key={img.src}
