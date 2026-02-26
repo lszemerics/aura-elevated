@@ -1,4 +1,4 @@
-import { Mail, Phone } from "lucide-react";
+import { Mail, Phone, Scale, ShieldCheck, Globe } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
@@ -8,11 +8,12 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
-      <div className="container mx-auto px-6 py-16 max-w-4xl">
+      <div className="container mx-auto px-6 py-16 max-w-5xl">
         <div className="text-center">
           <h4 className="font-display text-2xl font-light tracking-tight mb-2">AURA</h4>
           <p className="font-body text-xs tracking-[0.3em] uppercase text-primary-foreground/60 mb-8">{pick(t.subtitle, lang)}</p>
 
+          {/* Elérhetőségek */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-8">
             <a href="mailto:aura.vofi@gmail.com" className="flex items-center gap-2 font-body text-sm text-primary-foreground/80 hover:text-primary-foreground transition-colors">
               <Mail className="w-4 h-4" strokeWidth={1.5} />
@@ -24,31 +25,45 @@ const Footer = () => {
             </a>
           </div>
 
-          <div className="w-12 h-px bg-primary-foreground/20 mx-auto mb-8" />
+          <div className="w-12 h-px bg-primary-foreground/20 mx-auto mb-10" />
 
-          {/* Hivatalos adatok szekció */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[11px] text-primary-foreground/50 font-body tracking-wider text-left md:text-center border-t border-primary-foreground/10 pt-8">
-            <div className="space-y-1">
-              <p className="font-bold text-primary-foreground/70 uppercase mb-2">Szálláshely adatok</p>
-              <p>NTAK regisztrációs szám: Y6RBHQUR</p>
-              <p>Szálláshely típusa: Magánszálláshely</p>
-              <p>Cím: 8253 Révfülöp, Iskola utca 24.</p>
+          {/* Jogi szekciók - 3 oszlopos elrendezés */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 text-[10px] text-primary-foreground/50 font-body tracking-wider text-left border-t border-primary-foreground/10 pt-10">
+            
+            {/* 1. Impresszum és NTAK */}
+            <div className="space-y-2">
+              <p className="font-bold text-primary-foreground/70 uppercase mb-3 flex items-center gap-2">
+                <ShieldCheck className="w-3 h-3" /> Impresszum & NTAK
+              </p>
+              <p><strong>Szolgáltató:</strong> Aura Vendégház</p>
+              <p><strong>Cím:</strong> 8253 Révfülöp, Iskola utca 24.</p>
+              <p><strong>NTAK:</strong> Y6RBHQUR (Magánszálláshely)</p>
+              <p><strong>Tárhely:</strong> GitHub Inc. (support@github.com)</p>
             </div>
-            <div className="space-y-1">
-              <p className="font-bold text-primary-foreground/70 uppercase mb-2">Impresszum</p>
-              <p>Szolgáltató: Aura Vendégház</p>
-              <p>Tárhely: GitHub Inc. (San Francisco, USA)</p>
-              <p>Kapcsolat: support@github.com</p>
+
+            {/* 2. ÁSZF és Foglalási feltételek */}
+            <div className="space-y-2">
+              <p className="font-bold text-primary-foreground/70 uppercase mb-3 flex items-center gap-2">
+                <Globe className="w-3 h-3" /> Foglalási Feltételek
+              </p>
+              <p>A weboldal közvetlen online foglalást nem végez. A foglalás és fizetés külső partnereinken (Airbnb, Booking.com) keresztül történik.</p>
+              <p>A mindenkor érvényes árakat, a lemondási feltételeket és a házirendet a választott foglalási portál tartalmazza.</p>
+            </div>
+
+            {/* 3. Panaszkezelés & Adatvédelem */}
+            <div className="space-y-2">
+              <p className="font-bold text-primary-foreground/70 uppercase mb-3 flex items-center gap-2">
+                <Scale className="w-3 h-3" /> Jogorvoslat & GDPR
+              </p>
+              <p>Panasz esetén: Révfülöp Község Jegyzője vagy Veszprém Vármegyei Békéltető Testület.</p>
+              <p><strong>Adatvédelem:</strong> Az oldal sütiket (cookie) használ. Személyes adatgyűjtés itt nem történik; az adatkezelés a foglalási platformok szabályzata szerint alakul.</p>
             </div>
           </div>
 
-          <p className="font-body text-[10px] text-primary-foreground/30 mt-12 italic">
-            A foglalások az Airbnb rendszerén keresztül valósulnak meg.
-          </p>
-          
-          <p className="font-body text-[10px] text-primary-foreground/40 mt-4">
-            © {new Date().getFullYear()} {pick(t.copyright, lang)}
-          </p>
+          <div className="mt-12 pt-8 border-t border-primary-foreground/5 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40 text-[9px]">
+            <p>© {new Date().getFullYear()} {pick(t.copyright, lang)}</p>
+            <p className="italic underline decoration-dotted underline-offset-4 tracking-widest">Aura Vendégház Révfülöp</p>
+          </div>
         </div>
       </div>
     </footer>
