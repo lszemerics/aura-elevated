@@ -12,6 +12,7 @@ interface HeaderProps {
 }
 
 const navKeys: Section[] = ["house", "gallery", "rules"];
+const airbnbUrl = "https://www.airbnb.hu/rooms/1591647579928631355";
 
 const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -62,38 +63,17 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
               {navLabels[key]}
             </button>
           ))}
+          {/* Airbnb Link (Desktop) */}
+          <a
+            href={airbnbUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-1 text-[#FF5A5F] hover:opacity-80 transition-opacity font-semibold border-b-2 border-transparent"
+          >
+            Airbnb
+          </a>
         </nav>
 
         {/* Mobile menu button */}
         <button
           className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Menu"
-        >
-          <span className={`block w-5 h-px bg-foreground transition-transform ${mobileOpen ? "rotate-45 translate-y-[3.5px]" : ""}`} />
-          <span className={`block w-5 h-px bg-foreground transition-opacity ${mobileOpen ? "opacity-0" : ""}`} />
-          <span className={`block w-5 h-px bg-foreground transition-transform ${mobileOpen ? "-rotate-45 -translate-y-[3.5px]" : ""}`} />
-        </button>
-      </div>
-
-      {/* Mobile Nav */}
-      {mobileOpen && (
-        <div className="md:hidden bg-background border-b border-border px-6 py-4 animate-fade-in">
-          <nav className="flex flex-col gap-4 font-body text-sm tracking-[0.2em] uppercase">
-            {navKeys.map((key) => (
-              <button
-                key={key}
-                onClick={() => { onSectionChange(key); setMobileOpen(false); }}
-                className={`text-left ${activeSection === key ? "text-foreground font-semibold" : "text-muted-foreground"}`}
-              >
-                {navLabels[key]}
-              </button>
-            ))}
-          </nav>
-        </div>
-      )}
-    </header>
-  );
-};
-
-export default Header;
