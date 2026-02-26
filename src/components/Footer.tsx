@@ -51,7 +51,7 @@ const Footer = () => {
               </p>
               <p><strong>Szolgáltató:</strong> Aura Vendégház</p>
               <p><strong>Cím:</strong> 8253 Révfülöp, Iskola utca 24.</p>
-              <p><strong>NTAK:</strong> Y6RBHQUR (Magánszálláshely)</p>
+              <p><strong>NTAK:</strong> MA26121274 (Magánszálláshely)</p>
               <p><strong>Tárhely:</strong> GitHub Inc. (support@github.com)</p>
             </div>
 
