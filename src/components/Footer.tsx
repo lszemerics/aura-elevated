@@ -46,7 +46,6 @@ const Footer = () => {
               <p className="font-bold text-primary-foreground/70 uppercase mb-3 flex items-center gap-2">
                 <Globe className="w-3 h-3" /> Foglalási Feltételek
               </p>
-              <p>A weboldal közvetlen online foglalást nem végez. A foglalás és fizetés külső partnereinken (Airbnb, Booking.com) keresztül történik.</p>
               <p>A mindenkor érvényes árakat, a lemondási feltételeket és a házirendet a választott foglalási portál tartalmazza.</p>
             </div>
 
