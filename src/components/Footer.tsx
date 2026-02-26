@@ -1,4 +1,4 @@
-import { Mail, Phone, Scale, ShieldCheck, Globe } from "lucide-react";
+import { Mail, Phone, Scale, ShieldCheck, Globe, MapPin } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
@@ -8,6 +8,20 @@ const Footer = () => {
 
   return (
     <footer className="bg-primary text-primary-foreground">
+      {/* Interaktív térkép szekció - Pontos címre állítva */}
+      <div className="w-full h-80 opacity-80 grayscale hover:grayscale-0 transition-all duration-700 border-b border-primary-foreground/10">
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2729.4754530013996!2d17.625626076848245!3d46.83041994165502!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4769a921200db0df%3A0x637f6f3fa9a9d6e3!2zUsOpdmbDvGzDtnAsIElza29sYSB1LiAyNCwgODI1Mw!5e0!3m2!1shu!2shu!4v1708960000000!5m2!1shu!2shu"
+          width="100%"
+          height="100%"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          title="Aura Vendégház lokáció - Révfülöp"
+        ></iframe>
+      </div>
+
       <div className="container mx-auto px-6 py-16 max-w-5xl">
         <div className="text-center">
           <h4 className="font-display text-2xl font-light tracking-tight mb-2">AURA</h4>
@@ -61,7 +75,10 @@ const Footer = () => {
 
           <div className="mt-12 pt-8 border-t border-primary-foreground/5 flex flex-col md:flex-row justify-between items-center gap-4 opacity-40 text-[9px]">
             <p>© {new Date().getFullYear()} {pick(t.copyright, lang)}</p>
-            <p className="italic underline decoration-dotted underline-offset-4 tracking-widest">Aura Vendégház Révfülöp</p>
+            <div className="flex items-center gap-1 uppercase tracking-widest">
+              <MapPin className="w-2.5 h-2.5" />
+              <span>8253 Révfülöp, Iskola utca 24.</span>
+            </div>
           </div>
         </div>
       </div>
