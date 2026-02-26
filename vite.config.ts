@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/aura-elevated/",
+  base: mode === "production" ? "/aura-elevated/" : "/",
   server: {
     host: "::",
     port: 8080,
