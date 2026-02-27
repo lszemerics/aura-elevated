@@ -1,4 +1,4 @@
-import heroImage from "@/assets/aura-vendeghaz-nyitokep.jpg";
+import heroImage from "@/assets/aura-vendeghaz-nyito.jpg";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
