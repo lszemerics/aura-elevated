@@ -3,22 +3,22 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-import heroHouse from "@/assets/hero-house.jpg";
-import galleryExterior1 from "@/assets/gallery-exterior-1.jpg";
-import galleryExterior2 from "@/assets/gallery-exterior-2.jpg";
-import galleryExterior3 from "@/assets/gallery-exterior-3.jpg";
-import galleryExterior4 from "@/assets/gallery-exterior-4.jpg";
-import galleryExterior5 from "@/assets/gallery-exterior-5.jpg";
-import interiorLiving from "@/assets/interior-living.jpg";
-import interiorAttic from "@/assets/interior-attic.jpg";
-import galleryBedroom1 from "@/assets/gallery-bedroom-1.jpg";
-import galleryBedroom2 from "@/assets/gallery-bedroom-2.jpg";
-import galleryBedroom3 from "@/assets/gallery-bedroom-3.jpg";
-import galleryBedroom4 from "@/assets/gallery-bedroom-4.jpg";
-import galleryLiving2 from "@/assets/gallery-living-2.jpg";
-import galleryLiving4 from "@/assets/gallery-living-4.jpg";
-import galleryBathroom1 from "@/assets/gallery-bathroom-1.jpg";
-import galleryBathroom2 from "@/assets/gallery-bathroom-2.jpg";
+import heroHouse from "@/assets/aura-vendeghaz-nyito.jpg";
+import galleryExterior1 from "@/assets/aura-vendeghaz-e1.jpg";
+import galleryExterior2 from "@/assets/aura-vendeghaz-e2.jpg";
+import galleryExterior3 from "@/assets/aura-vendeghaz-e3.jpg";
+import galleryExterior4 from "@/assets/aura-vendeghaz-e4.jpg";
+import galleryExterior5 from "@/assets/aura-vendeghaz-e5.jpg";
+import interiorLiving from "@/assets/aura-vendeghaz-living.jpg";
+import interiorAttic from "@/assets/aura-vendeghaz-attic.jpg";
+import galleryBedroom1 from "@/assets/aura-vendeghaz-h1.jpg";
+import galleryBedroom2 from "@/assets/aura-vendeghaz-h2.jpg";
+import galleryBedroom3 from "@/assets/aura-vendeghaz-h3.jpg";
+import galleryBedroom4 from "@/assets/aura-vendeghaz-h4.jpg";
+import galleryLiving2 from "@/assets/aura-vendeghaz-l2.jpg";
+import galleryLiving4 from "@/assets/aura-vendeghaz-l4.jpg";
+import galleryBathroom1 from "@/assets/aura-vendeghaz-wc-1.jpg";
+import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg";
 
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 

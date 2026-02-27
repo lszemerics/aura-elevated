@@ -1,6 +1,6 @@
-import floorplanGround from "@/assets/floorplan-ground.jpg";
-import floorplanAttic from "@/assets/floorplan-attic.png";
-import propertyMap from "@/assets/property-map.jpg";
+import floorplanGround from "@/assets/aura-vendeghaz-floorplan-ground.jpg";
+import floorplanAttic from "@/assets/aura-vendeghaz-floorplan-attic.png";
+import propertyMap from "@/assets/aura-vendeghaz-property-map.jpg";
 import { Clock, Key, Home, CigaretteOff, Volume2, PawPrint, Flame, Trash2, Zap, Shield, Phone, Thermometer } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
