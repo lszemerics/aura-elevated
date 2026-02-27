@@ -3,7 +3,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-import heroHouse from "@/assets/aura-vendeghaz-nyito.jpg";
+import heroHouse from "@/assets/aura-vendeghaz.jpg";
 import galleryExterior1 from "@/assets/aura-vendeghaz-e1.jpg";
 import galleryExterior2 from "@/assets/aura-vendeghaz-e2.jpg";
 import galleryExterior3 from "@/assets/aura-vendeghaz-e3.jpg";
