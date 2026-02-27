@@ -1,6 +1,6 @@
-import interiorLiving from "@/assets/interior-living.jpg";
-import interiorAttic from "@/assets/interior-attic.jpg";
-import gardenImg from "@/assets/garden.jpg";
+import interiorLiving from "@/assets/aura-vendeghaz-living.jpg";
+import interiorAttic from "@/assets/aura-vendeghaz-attic.jpg";
+import gardenImg from "@/assets/aura-vendeghaz-garden.jpg";
 import { Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
