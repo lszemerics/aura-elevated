@@ -10,8 +10,8 @@ export const translations = {
 
   hero: {
     subtitle: {
-      hu: "Hangulatos, téliesített családi nyaraló Révfülöp szívében",
-      en: "A charming, year-round holiday home in the heart of Révfülöp",
+      hu: "Aura – Ahol a Balaton nyugalma és a modern design találkozik.",
+      en: "Aura – Where the serenity of Lake Balaton meets modern design.",
     },
     type: { hu: "Vendégház", en: "Guest House" },
   },
