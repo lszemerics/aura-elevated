@@ -3,57 +3,28 @@ import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import GuestHouseSection from "@/components/GuestHouseSection";
 import GallerySection from "@/components/GallerySection";
-import HouseRulesSection from "@/components/HouseRulesSection";
 import Footer from "@/components/Footer";
 import { LangProvider, type Lang } from "@/lib/i18n";
 
-type Section = "house" | "gallery" | "rules";
-
 const Index = () => {
-  const [activeSection, setActiveSection] = useState<Section>("house");
+  const [activeSection, setActiveSection] = useState<any>("house");
   const [lang, setLang] = useState<Lang>("hu");
 
-  const handleSectionChange = (section: Section) => {
+  const handleSectionChange = (section: any) => {
     setActiveSection(section);
     const el = document.getElementById(section);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth" });
-    }
+    if (el) el.scrollIntoView({ behavior: "smooth" });
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const sections: Section[] = ["rules", "gallery", "house"];
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el) {
-          const rect = el.getBoundingClientRect();
-          if (rect.top < window.innerHeight / 2) {
-            setActiveSection(id);
-            return;
-          }
-        }
-      }
-      setActiveSection("house");
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   return (
     <LangProvider value={lang}>
       <div className="min-h-screen bg-background">
-        <Header
-          activeSection={activeSection}
-          onSectionChange={handleSectionChange}
-          lang={lang}
-          onLangChange={setLang}
-        />
+        <Header activeSection={activeSection} onSectionChange={handleSectionChange} lang={lang} onLangChange={setLang} />
         <main>
           <HeroSection />
           <GuestHouseSection />
           <GallerySection />
-          <HouseRulesSection />
+          {/* A Házirend szekciót itt töröltük! */}
         </main>
         <Footer />
       </div>
