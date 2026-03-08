@@ -21,11 +21,14 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
   const handleNavClick = (key: Section) => {
     if (key === "rules") {
       navigate("/rules");
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: "smooth" });
     } else {
       if (location.pathname !== "/") {
         navigate("/");
-        setTimeout(() => onSectionChange(key), 100);
+        // Wait for page to render before scrolling
+        requestAnimationFrame(() => {
+          setTimeout(() => onSectionChange(key), 150);
+        });
       } else {
         onSectionChange(key);
       }

@@ -13,8 +13,28 @@ const Index = () => {
   const handleSectionChange = (section: any) => {
     setActiveSection(section);
     const el = document.getElementById(section);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      const headerOffset = 64;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+    }
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections: Array<"gallery" | "house"> = ["gallery", "house"];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < window.innerHeight / 2) {
+          setActiveSection(id);
+          return;
+        }
+      }
+      setActiveSection("house");
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <LangProvider value={lang}>
