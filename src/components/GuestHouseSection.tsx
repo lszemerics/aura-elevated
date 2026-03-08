@@ -5,7 +5,7 @@ import livingRoomPath from "@/assets/aura-vendeghaz-living.jpg"; // És egy bels
 
 const GuestHouseSection = () => {
   const lang = useLang();
-  const t = translations.guestHouse;
+  const t = translations.house;
 
   return (
     <section id="house" className="py-24 md:py-32 bg-secondary/30 relative overflow-hidden">
