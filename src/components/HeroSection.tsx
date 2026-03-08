@@ -23,7 +23,7 @@ const HeroSection = () => {
       {/* Content */}
       <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-12 lg:px-20 py-12 md:py-16">
         {/* Top — location tag */}
-        <div className="flex justify-between items-start">
+        <div className="flex justify-between items-start pt-16">
           <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.3s" }}>
             <p className="font-body text-[10px] tracking-[0.4em] uppercase text-white/70">
               Révfülöp · Balaton · Hungary
