@@ -13,7 +13,11 @@ const Index = () => {
   const handleSectionChange = (section: any) => {
     setActiveSection(section);
     const el = document.getElementById(section);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) {
+      const headerOffset = 64;
+      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+    }
   };
 
   return (
