@@ -14,8 +14,8 @@ const HeroSection = () => {
           src={mainHero}
           alt="Aura Vendégház"
           className="w-full h-full object-cover scale-105"
-          loading="eager"
-        />
+          loading="eager" />
+        
         {/* Cinematic overlay */}
         <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
       </div>
@@ -34,8 +34,8 @@ const HeroSection = () => {
             target="_blank"
             rel="noopener"
             className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden border border-white/40 hover:border-white/80 transition-all duration-500 animate-fade-in"
-            style={{ animationDelay: "0.6s" }}
-          >
+            style={{ animationDelay: "0.6s" }}>
+            
             <span className="absolute inset-0 bg-white/10 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
             <span className="relative font-body text-[11px] tracking-[0.3em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
               {lang === "hu" ? "Foglalás" : "Book Now"}
@@ -46,8 +46,8 @@ const HeroSection = () => {
         {/* Center — immersive title */}
         <div className="flex-1 flex items-center justify-center animate-fade-in" style={{ animationDelay: "0.1s" }}>
           <div className="text-center space-y-6 max-w-3xl">
-            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-white tracking-tight leading-[0.9]">
-              Aura
+            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tight leading-[0.9] text-white">
+              AURA
             </h1>
             <div className="w-16 h-[1px] bg-white/40 mx-auto" />
             <p className="font-display text-lg sm:text-xl md:text-2xl font-light text-white/80 tracking-wide">
@@ -70,8 +70,8 @@ const HeroSection = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>);
+
 };
 
 export default HeroSection;
