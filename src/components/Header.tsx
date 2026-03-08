@@ -45,29 +45,31 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-display text-xl tracking-tighter">AURA</Link>
+        <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-display text-xl tracking-tighter text-foreground">AURA</Link>
 
-        <nav className="hidden md:flex items-center gap-8 font-body text-xs tracking-[0.2em] uppercase">
+        <nav className="hidden md:flex items-center gap-8 font-body text-[11px] tracking-[0.2em] uppercase">
           {navItems.map((key) => (
             <button
               key={key}
               onClick={() => handleNavClick(key)}
-              className={`py-1 transition-all border-b ${activeSection === key ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
+              className={`py-1 transition-all border-b ${activeSection === key ? "border-primary text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
             >
               {pick(translations.nav[key], l)}
             </button>
           ))}
-          <a href="https://www.airbnb.hu/rooms/1591647579928631355" target="_blank" rel="noopener" className="text-[#FF5A5F] font-bold hover:opacity-80 transition-opacity">Airbnb</a>
+          <a href="https://www.airbnb.hu/rooms/1591647579928631355" target="_blank" rel="noopener" className="text-primary font-semibold hover:opacity-80 transition-opacity tracking-[0.15em]">
+            Airbnb
+          </a>
         </nav>
 
         <div className="flex items-center gap-4">
-          <div className="flex items-center gap-1 font-body text-xs tracking-widest">
+          <div className="flex items-center gap-1 font-body text-[11px] tracking-widest">
             <button onClick={() => onLangChange("hu")} className={lang === "hu" ? "font-bold text-foreground" : "text-muted-foreground"}>HU</button>
             <span className="text-border">/</span>
             <button onClick={() => onLangChange("en")} className={lang === "en" ? "font-bold text-foreground" : "text-muted-foreground"}>EN</button>
           </div>
           <button className="md:hidden" onClick={() => setMobileOpen(!mobileOpen)}>
-            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
           </button>
         </div>
       </div>
@@ -77,7 +79,7 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
           <button onClick={() => handleNavClick("house")}>{pick(translations.nav.house, l)}</button>
           <button onClick={() => handleNavClick("gallery")}>{pick(translations.nav.gallery, l)}</button>
           <button onClick={() => handleNavClick("rules")}>{pick(translations.nav.rules, l)}</button>
-          <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-[#FF5A5F] font-bold">Airbnb Foglalás</a>
+          <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-primary font-semibold">Airbnb</a>
         </nav>
       )}
     </header>
@@ -85,4 +87,3 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 };
 
 export default Header;
-

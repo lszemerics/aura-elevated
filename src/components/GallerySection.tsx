@@ -41,7 +41,6 @@ const imageSources = [
   { src: galleryBathroom2, category: "bathroom" as const },
 ];
 
-// Returns span classes based on position within the filtered set
 function getSpan(index: number, total: number): string {
   if (total <= 3) return index === 0 ? "md:col-span-2 md:row-span-1" : "md:col-span-1 md:row-span-1";
   if (total === 4) return index === 0 ? "md:col-span-2 md:row-span-1" : "md:col-span-1 md:row-span-1";
@@ -49,7 +48,6 @@ function getSpan(index: number, total: number): string {
     if (index === 0) return "md:col-span-2 md:row-span-2";
     return "md:col-span-1 md:row-span-1";
   }
-  // 7+ images: first one large, rest fill naturally
   if (index === 0) return "md:col-span-2 md:row-span-2";
   if (index === 5) return "md:col-span-2 md:row-span-1";
   return "md:col-span-1 md:row-span-1";
@@ -93,21 +91,21 @@ const GallerySection = () => {
   );
 
   return (
-    <section id="gallery" className="pt-24">
-      <div className="container mx-auto px-6 py-20 max-w-4xl text-center">
-        <p className="font-body text-xs tracking-[0.4em] uppercase text-muted-foreground mb-6">{pick(t.label, lang)}</p>
-        <h2 className="font-display text-3xl md:text-5xl font-light leading-tight text-foreground mb-10">
+    <section id="gallery" className="pt-12">
+      <div className="container mx-auto px-6 py-24 max-w-3xl">
+        <p className="font-body text-xs tracking-[0.4em] uppercase text-primary mb-8">{pick(t.label, lang)}</p>
+        <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground mb-12">
           {pick(t.title, lang)}
         </h2>
 
-        <div className="flex flex-wrap items-center justify-center gap-2 mb-12">
+        <div className="flex flex-wrap items-center gap-3 mb-12">
           {categoryKeys.map((key) => (
             <button
               key={key}
               onClick={() => setActiveCategory(key)}
-              className={`font-body text-xs tracking-[0.15em] uppercase px-4 py-2 rounded-sm border transition-colors ${
+              className={`font-body text-[11px] tracking-[0.15em] uppercase px-4 py-2 border transition-all duration-300 ${
                 activeCategory === key
-                  ? "bg-primary text-primary-foreground border-primary"
+                  ? "bg-primary text-accent-foreground border-primary"
                   : "bg-transparent text-muted-foreground border-border hover:text-foreground hover:border-foreground/30"
               }`}
             >
@@ -117,23 +115,23 @@ const GallerySection = () => {
         </div>
       </div>
 
-      <div className="container mx-auto px-6 pb-20 max-w-6xl">
-        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-flow-dense gap-3 auto-rows-[280px]">
+      <div className="container mx-auto px-6 pb-24 max-w-6xl">
+        <div className="grid grid-cols-1 md:grid-cols-3 md:grid-flow-dense gap-2 auto-rows-[280px]">
           {filtered.map((img, i) => (
             <div
               key={img.src}
-              className={`relative overflow-hidden rounded cursor-pointer group ${getSpan(i, filtered.length)}`}
+              className={`relative overflow-hidden cursor-pointer group ${getSpan(i, filtered.length)}`}
               onClick={() => openLightbox(i)}
             >
               <img
                 src={img.src}
                 alt={img.alt}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                 loading="lazy"
               />
-              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/20 transition-colors duration-300" />
+              <div className="absolute inset-0 bg-foreground/0 group-hover:bg-foreground/15 transition-colors duration-500" />
               <div className="absolute bottom-0 left-0 right-0 p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <p className="font-body text-xs text-primary-foreground tracking-wide">{img.alt}</p>
+                <p className="font-body text-xs text-background tracking-wide">{img.alt}</p>
               </div>
             </div>
           ))}
@@ -152,14 +150,14 @@ const GallerySection = () => {
         >
           <button
             onClick={closeLightbox}
-            className="absolute top-6 right-6 text-primary-foreground/80 hover:text-primary-foreground transition-colors z-10"
+            className="absolute top-6 right-6 text-background/80 hover:text-background transition-colors z-10"
             aria-label={lang === "hu" ? "Bezárás" : "Close"}
           >
             <X className="w-6 h-6" strokeWidth={1.5} />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); goPrev(); }}
-            className="absolute left-4 md:left-8 text-primary-foreground/60 hover:text-primary-foreground transition-colors z-10"
+            className="absolute left-4 md:left-8 text-background/60 hover:text-background transition-colors z-10"
             aria-label={lang === "hu" ? "Előző" : "Previous"}
           >
             <ChevronLeft className="w-8 h-8" strokeWidth={1} />
@@ -167,17 +165,17 @@ const GallerySection = () => {
           <img
             src={filtered[lightboxIndex].src}
             alt={filtered[lightboxIndex].alt}
-            className="max-h-[85vh] max-w-[90vw] object-contain rounded animate-fade-in-slow"
+            className="max-h-[85vh] max-w-[90vw] object-contain animate-fade-in-slow"
             onClick={(e) => e.stopPropagation()}
           />
           <button
             onClick={(e) => { e.stopPropagation(); goNext(); }}
-            className="absolute right-4 md:right-8 text-primary-foreground/60 hover:text-primary-foreground transition-colors z-10"
+            className="absolute right-4 md:right-8 text-background/60 hover:text-background transition-colors z-10"
             aria-label={lang === "hu" ? "Következő" : "Next"}
           >
             <ChevronRight className="w-8 h-8" strokeWidth={1} />
           </button>
-          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 font-body text-xs text-primary-foreground/50 tracking-widest">
+          <p className="absolute bottom-6 left-1/2 -translate-x-1/2 font-body text-xs text-background/50 tracking-widest">
             {lightboxIndex + 1} / {filtered.length}
           </p>
         </div>
