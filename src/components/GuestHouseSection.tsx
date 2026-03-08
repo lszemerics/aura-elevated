@@ -19,15 +19,15 @@ const GuestHouseSection = () => {
           <div className="md:col-span-5 space-y-8 text-center md:text-left">
             <div className="space-y-4">
               <p className="font-body text-xs tracking-[0.4em] uppercase text-muted-foreground">
-                {pick(t.label, lang)}
+                {pick(t.sectionLabel, lang)}
               </p>
               <h2 className="font-display text-4xl md:text-5xl font-light leading-tight text-foreground tracking-tight">
-                {pick(t.title, lang)}
+                {pick(t.heading1, lang)}<br />{pick(t.heading2, lang)}
               </h2>
             </div>
             
             <p className="font-body text-base text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0">
-              {pick(t.description, lang)}
+              {pick(t.intro, lang)}
             </p>
 
             {/* Felszereltség lista - Modernebb, ikonok nélküli elrendezésben */}
