@@ -46,7 +46,7 @@ const HeroSection = () => {
         {/* Center — immersive title */}
         <div className="flex-1 flex items-center justify-center animate-fade-in" style={{ animationDelay: "0.1s" }}>
           <div className="text-center space-y-6 max-w-3xl">
-            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light tracking-tight leading-[0.9] text-white">
+            <h1 className="font-display text-6xl sm:text-7xl lg:text-9xl font-light tracking-tight leading-[0.9] text-white md:text-8xl">
               AURA
             </h1>
             <div className="w-16 h-[1px] bg-white/40 mx-auto" />
