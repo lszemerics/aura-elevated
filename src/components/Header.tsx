@@ -23,21 +23,10 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
       if (location.pathname !== "/rules") {
         navigate("/rules");
       }
-      // Force instant reset to top to avoid preserved scroll positions between routes
       requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     } else {
       if (location.pathname !== "/") {
-        // Store target section, navigate, then poll until element exists
-        navigate("/");
-        const scrollToSection = () => {
-          const el = document.getElementById(key);
-          if (el) {
-            onSectionChange(key);
-          } else {
-            requestAnimationFrame(scrollToSection);
-          }
-        };
-        requestAnimationFrame(scrollToSection);
+        navigate("/", { state: { scrollTo: key } });
       } else {
         onSectionChange(key);
       }
