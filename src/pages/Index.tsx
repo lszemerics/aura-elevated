@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import GuestHouseSection from "@/components/GuestHouseSection";
@@ -7,44 +7,60 @@ import Footer from "@/components/Footer";
 import { LangProvider, type Lang } from "@/lib/i18n";
 import { useLocation, useNavigate } from "react-router-dom";
 
-type Section = "house" | "gallery";
+type Section = "house" | "gallery" | "rules";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<Section>("house");
   const [lang, setLang] = useState<Lang>("hu");
   const location = useLocation();
   const navigate = useNavigate();
+  const isScrollingRef = useRef(false);
 
   const handleSectionChange = (section: Section) => {
-    setActiveSection(section);
-    const el = document.getElementById(section);
+    const el = document.getElementById(section === "house" ? "hero" : section);
     if (el) {
+      isScrollingRef.current = true;
+      setActiveSection(section);
       const headerOffset = 64;
       const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+      
       window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+
+      // Kikapcsoljuk a scroll figyelőt, amíg a sima görgetés tart
+      setTimeout(() => {
+        isScrollingRef.current = false;
+      }, 800);
     }
   };
 
   useEffect(() => {
     const requestedSection = (location.state as { scrollTo?: Section } | null)?.scrollTo;
     if (requestedSection) {
-      requestAnimationFrame(() => handleSectionChange(requestedSection));
+      setTimeout(() => handleSectionChange(requestedSection), 100);
       navigate(location.pathname, { replace: true, state: null });
     }
-  }, [location.state, location.pathname, navigate]);
+  }, [location.state]);
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections: Section[] = ["gallery", "house"];
-      for (const id of sections) {
-        const el = document.getElementById(id);
-        if (el && el.getBoundingClientRect().top < window.innerHeight / 2) {
-          setActiveSection(id);
-          return;
+      if (isScrollingRef.current) return;
+
+      const sections: {id: Section, offset: number}[] = [
+        { id: "gallery", offset: 300 },
+        { id: "house", offset: 0 }
+      ];
+
+      const scrollPos = window.scrollY + 100;
+
+      for (const section of sections) {
+        const el = document.getElementById(section.id === "house" ? "hero" : section.id);
+        if (el && scrollPos >= el.offsetTop - 70) {
+          setActiveSection(section.id);
+          break;
         }
       }
-      setActiveSection("house");
     };
+
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
@@ -54,10 +70,9 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Header activeSection={activeSection} onSectionChange={handleSectionChange} lang={lang} onLangChange={setLang} />
         <main>
-          <HeroSection />
+          <div id="house"><HeroSection /></div>
           <GuestHouseSection />
-          <GallerySection />
-          {/* A Házirend szekciót itt töröltük! */}
+          <div id="gallery"><GallerySection /></div>
         </main>
         <Footer />
       </div>
