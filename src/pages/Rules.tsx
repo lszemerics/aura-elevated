@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Header from "@/components/Header";
 import HouseRulesSection from "@/components/HouseRulesSection";
 import Footer from "@/components/Footer";
@@ -6,6 +6,10 @@ import { LangProvider, type Lang } from "@/lib/i18n";
 
 const Rules = () => {
   const [lang, setLang] = useState<Lang>("hu");
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+  }, []);
 
   return (
     <LangProvider value={lang}>

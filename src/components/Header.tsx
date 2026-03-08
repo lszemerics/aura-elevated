@@ -20,12 +20,14 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 
   const handleNavClick = (key: Section) => {
     if (key === "rules") {
-      navigate("/rules");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+      if (location.pathname !== "/rules") {
+        navigate("/rules");
+      }
+      // Force instant reset to top to avoid preserved scroll positions between routes
+      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     } else {
       if (location.pathname !== "/") {
         navigate("/");
-        // Wait for page to render before scrolling
         requestAnimationFrame(() => {
           setTimeout(() => onSectionChange(key), 150);
         });
