@@ -1,23 +1,27 @@
+import { useState } from "react";
 import Header from "@/components/Header";
 import HouseRulesSection from "@/components/HouseRulesSection";
 import Footer from "@/components/Footer";
-import { useLang } from "@/lib/i18n";
+import { LangProvider, type Lang } from "@/lib/i18n";
 
 const Rules = () => {
-  // Mivel ez egy külön oldal, itt csak a fejléc, a szekció és a lábléc kell
+  const [lang, setLang] = useState<Lang>("hu");
+
   return (
-    <div className="min-h-screen bg-background">
-      <Header 
-        activeSection="rules" 
-        onSectionChange={() => {}} // Itt nem kell görgetés
-        lang="hu" // Ezt az App.tsx-ből is lehetne kezelni, de kezdésnek fixáljuk
-        onLangChange={() => {}}
-      />
-      <main className="pt-16">
-        <HouseRulesSection />
-      </main>
-      <Footer />
-    </div>
+    <LangProvider value={lang}>
+      <div className="min-h-screen bg-background">
+        <Header 
+          activeSection="rules" 
+          onSectionChange={() => {}}
+          lang={lang}
+          onLangChange={setLang}
+        />
+        <main className="pt-16">
+          <HouseRulesSection />
+        </main>
+        <Footer />
+      </div>
+    </LangProvider>
   );
 };
 
