@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import Header from "@/components/Header";
 import HeroSection from "@/components/HeroSection";
 import GuestHouseSection from "@/components/GuestHouseSection";
@@ -7,57 +7,70 @@ import Footer from "@/components/Footer";
 import { LangProvider, type Lang } from "@/lib/i18n";
 import { useLocation, useNavigate } from "react-router-dom";
 
-type Section = "house" | "gallery" | "rules";
+type Section = "house" | "gallery";
 
 const Index = () => {
   const [activeSection, setActiveSection] = useState<Section>("house");
   const [lang, setLang] = useState<Lang>("hu");
   const location = useLocation();
   const navigate = useNavigate();
-  const isScrollingRef = useRef(false);
+  const isProgrammaticScrollRef = useRef(false);
 
-  const handleSectionChange = (section: Section) => {
-    const el = document.getElementById(section === "house" ? "hero" : section);
-    if (el) {
-      isScrollingRef.current = true;
-      setActiveSection(section);
-      const headerOffset = 64;
-      const elementPosition = el.getBoundingClientRect().top + window.scrollY;
-      
-      window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+  const handleSectionChange = useCallback((section: Section) => {
+    const el = document.getElementById(section);
+    if (!el) return;
 
-      // Kikapcsoljuk a scroll figyelőt, amíg a sima görgetés tart
-      setTimeout(() => {
-        isScrollingRef.current = false;
-      }, 800);
-    }
-  };
+    isProgrammaticScrollRef.current = true;
+    setActiveSection(section);
+
+    const headerOffset = 64;
+    const elementPosition = el.getBoundingClientRect().top + window.scrollY;
+    window.scrollTo({ top: elementPosition - headerOffset, behavior: "smooth" });
+
+    window.setTimeout(() => {
+      isProgrammaticScrollRef.current = false;
+    }, 800);
+  }, []);
 
   useEffect(() => {
     const requestedSection = (location.state as { scrollTo?: Section } | null)?.scrollTo;
-    if (requestedSection) {
-      setTimeout(() => handleSectionChange(requestedSection), 100);
-      navigate(location.pathname, { replace: true, state: null });
-    }
-  }, [location.state]);
+    if (!requestedSection) return;
+
+    let rafId = 0;
+    let retries = 0;
+
+    const scrollWhenReady = () => {
+      const target = document.getElementById(requestedSection);
+      if (target) {
+        handleSectionChange(requestedSection);
+        navigate(location.pathname, { replace: true, state: null });
+        return;
+      }
+
+      if (retries < 20) {
+        retries += 1;
+        rafId = requestAnimationFrame(scrollWhenReady);
+      } else {
+        navigate(location.pathname, { replace: true, state: null });
+      }
+    };
+
+    rafId = requestAnimationFrame(scrollWhenReady);
+
+    return () => cancelAnimationFrame(rafId);
+  }, [handleSectionChange, location.pathname, location.state, navigate]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (isScrollingRef.current) return;
+      if (isProgrammaticScrollRef.current) return;
 
-      const sections: {id: Section, offset: number}[] = [
-        { id: "gallery", offset: 300 },
-        { id: "house", offset: 0 }
-      ];
+      const gallerySection = document.getElementById("gallery");
+      const scrollPos = window.scrollY + 120;
 
-      const scrollPos = window.scrollY + 100;
-
-      for (const section of sections) {
-        const el = document.getElementById(section.id === "house" ? "hero" : section.id);
-        if (el && scrollPos >= el.offsetTop - 70) {
-          setActiveSection(section.id);
-          break;
-        }
+      if (gallerySection && scrollPos >= gallerySection.offsetTop) {
+        setActiveSection("gallery");
+      } else {
+        setActiveSection("house");
       }
     };
 
@@ -70,9 +83,9 @@ const Index = () => {
       <div className="min-h-screen bg-background">
         <Header activeSection={activeSection} onSectionChange={handleSectionChange} lang={lang} onLangChange={setLang} />
         <main>
-          <div id="house"><HeroSection /></div>
+          <HeroSection />
           <GuestHouseSection />
-          <div id="gallery"><GallerySection /></div>
+          <GallerySection />
         </main>
         <Footer />
       </div>
@@ -81,3 +94,4 @@ const Index = () => {
 };
 
 export default Index;
+

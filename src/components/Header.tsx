@@ -5,13 +5,16 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 type Section = "house" | "gallery" | "rules";
+type HomeSection = Exclude<Section, "rules">;
 
 interface HeaderProps {
   activeSection: Section;
-  onSectionChange: (section: any) => void;
+  onSectionChange: (section: HomeSection) => void;
   lang: "hu" | "en";
   onLangChange: (lang: "hu" | "en") => void;
 }
+
+const navItems: Section[] = ["house", "gallery", "rules"];
 
 const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderProps) => {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -21,30 +24,37 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 
   const handleNavClick = (key: Section) => {
     setMobileOpen(false);
+
     if (key === "rules") {
-      if (location.pathname !== "/rules") navigate("/rules");
-    } else {
-      if (location.pathname !== "/") {
-        navigate("/", { state: { scrollTo: key } });
+      if (location.pathname !== "/rules") {
+        navigate("/rules");
       } else {
-        onSectionChange(key);
+        window.scrollTo({ top: 0, behavior: "smooth" });
       }
+      return;
     }
+
+    if (location.pathname !== "/") {
+      navigate("/", { state: { scrollTo: key } });
+      return;
+    }
+
+    onSectionChange(key);
   };
 
   return (
     <header className="fixed top-0 left-0 right-0 z-[100] bg-background/90 backdrop-blur-md border-b border-border">
       <div className="container mx-auto flex items-center justify-between h-16 px-6">
-        <Link to="/" onClick={() => window.scrollTo(0,0)} className="font-display text-xl tracking-tighter">AURA</Link>
-        
+        <Link to="/" onClick={() => window.scrollTo(0, 0)} className="font-display text-xl tracking-tighter">AURA</Link>
+
         <nav className="hidden md:flex items-center gap-8 font-body text-xs tracking-[0.2em] uppercase">
-          {["house", "gallery", "rules"].map((key: any) => (
+          {navItems.map((key) => (
             <button
               key={key}
               onClick={() => handleNavClick(key)}
               className={`py-1 transition-all border-b ${activeSection === key ? "border-foreground text-foreground" : "border-transparent text-muted-foreground hover:text-foreground"}`}
             >
-              {pick(translations.nav[key as keyof typeof translations.nav], l)}
+              {pick(translations.nav[key], l)}
             </button>
           ))}
           <a href="https://www.airbnb.hu/rooms/1591647579928631355" target="_blank" rel="noopener" className="text-[#FF5A5F] font-bold hover:opacity-80 transition-opacity">Airbnb</a>
@@ -62,7 +72,6 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
         </div>
       </div>
 
-      {/* Mobile Nav */}
       {mobileOpen && (
         <nav className="md:hidden bg-background border-b border-border flex flex-col p-6 gap-6 font-body text-sm tracking-widest uppercase">
           <button onClick={() => handleNavClick("house")}>{pick(translations.nav.house, l)}</button>
@@ -76,3 +85,4 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 };
 
 export default Header;
+
