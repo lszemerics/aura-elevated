@@ -8,7 +8,7 @@ const Rules = () => {
   const [lang, setLang] = useState<Lang>("hu");
 
   useEffect(() => {
-    window.scrollTo({ top: 0, left: 0, behavior: "auto" });
+    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -16,11 +16,11 @@ const Rules = () => {
       <div className="min-h-screen bg-background">
         <Header 
           activeSection="rules" 
-          onSectionChange={() => {}}
-          lang={lang}
-          onLangChange={setLang}
+          onSectionChange={() => {}} 
+          lang={lang} 
+          onLangChange={setLang} 
         />
-        <main className="pt-16">
+        <main className="pt-20"> {/* Kicsit nagyobb felső margó az aloldalnak */}
           <HouseRulesSection />
         </main>
         <Footer />
