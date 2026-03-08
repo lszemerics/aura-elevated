@@ -5,12 +5,17 @@ import GuestHouseSection from "@/components/GuestHouseSection";
 import GallerySection from "@/components/GallerySection";
 import Footer from "@/components/Footer";
 import { LangProvider, type Lang } from "@/lib/i18n";
+import { useLocation, useNavigate } from "react-router-dom";
+
+type Section = "house" | "gallery";
 
 const Index = () => {
-  const [activeSection, setActiveSection] = useState<any>("house");
+  const [activeSection, setActiveSection] = useState<Section>("house");
   const [lang, setLang] = useState<Lang>("hu");
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const handleSectionChange = (section: any) => {
+  const handleSectionChange = (section: Section) => {
     setActiveSection(section);
     const el = document.getElementById(section);
     if (el) {
@@ -21,8 +26,16 @@ const Index = () => {
   };
 
   useEffect(() => {
+    const requestedSection = (location.state as { scrollTo?: Section } | null)?.scrollTo;
+    if (requestedSection) {
+      requestAnimationFrame(() => handleSectionChange(requestedSection));
+      navigate(location.pathname, { replace: true, state: null });
+    }
+  }, [location.state, location.pathname, navigate]);
+
+  useEffect(() => {
     const handleScroll = () => {
-      const sections: Array<"gallery" | "house"> = ["gallery", "house"];
+      const sections: Section[] = ["gallery", "house"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el && el.getBoundingClientRect().top < window.innerHeight / 2) {
