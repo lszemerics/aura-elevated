@@ -27,10 +27,17 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
       requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     } else {
       if (location.pathname !== "/") {
+        // Store target section, navigate, then poll until element exists
         navigate("/");
-        requestAnimationFrame(() => {
-          setTimeout(() => onSectionChange(key), 150);
-        });
+        const scrollToSection = () => {
+          const el = document.getElementById(key);
+          if (el) {
+            onSectionChange(key);
+          } else {
+            requestAnimationFrame(scrollToSection);
+          }
+        };
+        requestAnimationFrame(scrollToSection);
       } else {
         onSectionChange(key);
       }
