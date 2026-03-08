@@ -1,6 +1,4 @@
 import mainHero from "@/assets/aura-vendeghaz.jpg";
-import atticImg from "@/assets/aura-vendeghaz-attic.jpg";
-import exteriorImg from "@/assets/aura-vendeghaz-e4.jpg";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
@@ -9,92 +7,67 @@ const HeroSection = () => {
   const t = translations.hero;
 
   return (
-    <section className="relative min-h-screen w-full overflow-hidden bg-[#fdfdfd] flex items-center">
-      {/* Háttérben úszó hatalmas felirat - elegáns mélység */}
-      <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-        <h1 className="font-display text-[22vw] font-light text-secondary/30 tracking-tighter leading-none select-none opacity-40 animate-fade-in">
-          AURA
-        </h1>
+    <section className="relative h-screen w-full overflow-hidden">
+      {/* Full-bleed background image */}
+      <div className="absolute inset-0">
+        <img
+          src={mainHero}
+          alt="Aura Vendégház"
+          className="w-full h-full object-cover scale-105"
+          loading="eager"
+        />
+        {/* Cinematic overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/10 to-black/60" />
       </div>
 
-      <div className="container mx-auto px-6 relative z-10 w-full py-12">
-        <div className="grid grid-cols-12 gap-6 items-center">
-          
-          {/* 1. BAL OLDAL: Szöveg és az E4-es külső kép */}
-          <div className="col-span-12 lg:col-span-3 order-2 lg:order-1 flex flex-col gap-10">
-            <div className="space-y-6 max-w-xs animate-fade-in" style={{ animationDelay: "0.2s" }}>
-              <div className="w-10 h-[1px] bg-foreground/40" />
-              <p className="font-body text-sm text-muted-foreground leading-relaxed italic tracking-wide">
-                {pick(t.subtitle, lang)}
-              </p>
-              <div className="text-[10px] tracking-[0.3em] uppercase text-muted-foreground/80 space-y-1">
-                <p>Révfülöp · Balaton</p>
-                <p>Est. 2024</p>
-              </div>
-            </div>
-
-            <div className="hidden lg:block w-full aspect-[4/5] overflow-hidden rounded-sm shadow-xl grayscale-[0.2] hover:grayscale-0 transition-all duration-1000 group">
-              <img 
-                src={exteriorImg} 
-                alt="Exterior detail" 
-                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-1000" 
-              />
-            </div>
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col justify-between px-6 md:px-12 lg:px-20 py-12 md:py-16">
+        {/* Top — location tag */}
+        <div className="flex justify-between items-start">
+          <div className="space-y-2 animate-fade-in" style={{ animationDelay: "0.3s" }}>
+            <p className="font-body text-[10px] tracking-[0.4em] uppercase text-white/70">
+              Révfülöp · Balaton · Hungary
+            </p>
           </div>
+          <a
+            href="https://www.airbnb.hu/rooms/1591647579928631355"
+            target="_blank"
+            rel="noopener"
+            className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden border border-white/40 hover:border-white/80 transition-all duration-500 animate-fade-in"
+            style={{ animationDelay: "0.6s" }}
+          >
+            <span className="absolute inset-0 bg-white/10 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
+            <span className="relative font-body text-[11px] tracking-[0.3em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
+              {lang === "hu" ? "Foglalás" : "Book Now"}
+            </span>
+          </a>
+        </div>
 
-          {/* 2. KÖZÉP: A fő kép egyedi maszkkal */}
-          <div className="col-span-12 lg:col-span-6 order-1 lg:order-2">
-            <div className="relative z-20 px-4 lg:px-8 animate-fade-in">
-              <div className="relative aspect-[3/4] overflow-hidden rounded-t-[120px] shadow-2xl">
-                <img
-                  src={mainHero}
-                  alt="Aura Vendégház"
-                  className="w-full h-full object-cover transform scale-105"
-                  loading="eager"
-                />
-                {/* Alsó lágy átmenet a kép és a háttér között */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#fdfdfd] via-transparent to-transparent opacity-40" />
-              </div>
-              
-              {/* Típus felirat lebegő hatással */}
-              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 bg-white px-8 py-4 shadow-lg">
-                <p className="font-display text-sm tracking-[0.5em] uppercase text-foreground whitespace-nowrap">
-                  {pick(t.type, lang)}
-                </p>
-              </div>
-            </div>
+        {/* Center — immersive title */}
+        <div className="flex-1 flex items-center justify-center animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <div className="text-center space-y-6 max-w-3xl">
+            <h1 className="font-display text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-light text-white tracking-tight leading-[0.9]">
+              Aura
+            </h1>
+            <div className="w-16 h-[1px] bg-white/40 mx-auto" />
+            <p className="font-display text-lg sm:text-xl md:text-2xl font-light text-white/80 tracking-wide">
+              {pick(t.type, lang)}
+            </p>
           </div>
+        </div>
 
-          {/* 3. JOBB OLDAL: Attic (tetőtér) kép és a foglalás */}
-          <div className="col-span-12 lg:col-span-3 order-3 flex flex-col justify-between h-full min-h-[450px] pt-12 lg:pt-0 lg:text-right">
-            <div className="w-full aspect-[4/5] overflow-hidden rounded-sm shadow-lg translate-y-4 hidden lg:block animate-fade-in" style={{ animationDelay: "0.4s" }}>
-              <img 
-                src={atticImg} 
-                alt="Attic interior" 
-                className="w-full h-full object-cover" 
-              />
-            </div>
+        {/* Bottom — subtitle + scroll hint */}
+        <div className="flex flex-col md:flex-row justify-between items-end gap-8 animate-fade-in" style={{ animationDelay: "0.5s" }}>
+          <p className="font-body text-sm md:text-base text-white/60 leading-relaxed max-w-md tracking-wide">
+            {pick(t.subtitle, lang)}
+          </p>
 
-            <div className="flex flex-col items-center lg:items-end gap-10">
-              <a
-                href="https://www.airbnb.hu/rooms/1591647579928631355"
-                target="_blank"
-                rel="noopener"
-                className="group relative inline-flex items-center justify-center px-10 py-4 overflow-hidden border border-foreground transition-all duration-500"
-              >
-                <span className="absolute inset-0 bg-foreground translate-y-full group-hover:translate-y-0 transition-transform duration-500"></span>
-                <span className="relative font-body text-xs tracking-[0.3em] uppercase group-hover:text-background transition-colors duration-500">
-                  {lang === "hu" ? "Foglalás" : "Book Now"}
-                </span>
-              </a>
-
-              <div className="flex items-center gap-4 text-[9px] tracking-[0.4em] uppercase text-muted-foreground rotate-0 lg:rotate-90 origin-right lg:-translate-y-12">
-                <span className="animate-pulse">Scroll to explore</span>
-                <div className="w-12 h-[1px] bg-muted-foreground/40" />
-              </div>
-            </div>
+          <div className="flex items-center gap-4 text-[9px] tracking-[0.4em] uppercase text-white/50 shrink-0">
+            <div className="w-12 h-[1px] bg-white/30" />
+            <span className="animate-pulse">
+              {lang === "hu" ? "Görgess" : "Scroll"}
+            </span>
           </div>
-
         </div>
       </div>
     </section>
