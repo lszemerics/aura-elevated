@@ -23,7 +23,6 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
       if (location.pathname !== "/rules") {
         navigate("/rules");
       }
-      requestAnimationFrame(() => window.scrollTo({ top: 0, left: 0, behavior: "auto" }));
     } else {
       if (location.pathname !== "/") {
         navigate("/", { state: { scrollTo: key } });
