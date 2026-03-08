@@ -20,6 +20,22 @@ const Index = () => {
     }
   };
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections: Array<"gallery" | "house"> = ["gallery", "house"];
+      for (const id of sections) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top < window.innerHeight / 2) {
+          setActiveSection(id);
+          return;
+        }
+      }
+      setActiveSection("house");
+    };
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <LangProvider value={lang}>
       <div className="min-h-screen bg-background">
