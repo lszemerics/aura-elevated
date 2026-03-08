@@ -1,85 +1,95 @@
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
-import exteriorPath from "@/assets/aura-vendeghaz-e1.jpg"; // Használjuk az egyik külső képet
-import livingRoomPath from "@/assets/aura-vendeghaz-living.jpg"; // És egy belsőt
+import mainImage from "@/assets/aura-vendeghaz.jpg";
+import secondaryImage from "@/assets/aura-vendeghaz-attic.jpg";
+import thirdImage from "@/assets/aura-vendeghaz-e4.jpg";
 
 const GuestHouseSection = () => {
   const lang = useLang();
-  const t = translations.house;
+  const t = translations.guestHouse;
 
   return (
     <section id="house" className="py-24 md:py-32 bg-secondary/30 relative overflow-hidden">
-      {/* Háttér dekorációs elem (opcionális, de elegáns) */}
-      <div className="absolute top-0 right-0 w-1/3 h-full bg-secondary opacity-50 translate-x-1/4 -skew-x-12 z-0" />
+      {/* Elegáns háttér dekorációs elem */}
+      <div className="absolute top-0 right-0 w-1/4 h-full bg-secondary opacity-40 translate-x-1/4 -skew-x-12 z-0" />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid md:grid-cols-12 gap-12 md:gap-16 items-center">
+        <div className="grid md:grid-cols-12 gap-12 md:gap-20 items-center">
           
-          {/* Szöveges oszlop (balra) */}
+          {/* Szöveges oszlop */}
           <div className="md:col-span-5 space-y-8 text-center md:text-left">
             <div className="space-y-4">
-              <p className="font-body text-xs tracking-[0.4em] uppercase text-muted-foreground">
-                {pick(t.sectionLabel, lang)}
+              <p className="font-body text-xs tracking-[0.5em] uppercase text-muted-foreground">
+                {pick(t.label, lang)}
               </p>
               <h2 className="font-display text-4xl md:text-5xl font-light leading-tight text-foreground tracking-tight">
-                {pick(t.heading1, lang)}<br />{pick(t.heading2, lang)}
+                {pick(t.title, lang)}
               </h2>
             </div>
             
             <p className="font-body text-base text-muted-foreground leading-relaxed max-w-xl mx-auto md:mx-0">
-              {pick(t.intro, lang)}
+              {pick(t.description, lang)}
             </p>
 
-            {/* Felszereltség lista - Modernebb, ikonok nélküli elrendezésben */}
-            <div className="grid grid-cols-2 gap-x-6 gap-y-4 pt-6 border-t border-border/50">
+            {/* Letisztult felszereltség lista */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5 pt-8 border-t border-border/60 text-left">
               {[
-                "Modern kényelem", 
-                "Balatoni nyugalom", 
-                "Tágas terek", 
-                "Csendes környezet"
+                { hu: "Modern kényelem", en: "Modern comfort" },
+                { hu: "Balatoni nyugalom", en: "Balaton serenity" },
+                { hu: "Tágas tetőtér", en: "Spacious attic" },
+                { hu: "Privát kert", en: "Private garden" }
               ].map(item => (
-                <div key={item} className="flex items-center gap-2">
-                  <div className="w-1.5 h-1.5 rounded-full bg-primary/60" />
-                  <span className="font-body text-sm text-foreground/80 tracking-wide">{item}</span>
+                <div key={item.en} className="flex items-center gap-3">
+                  <div className="w-1 h-1 rounded-full bg-primary/80" />
+                  <span className="font-body text-xs tracking-widest uppercase text-foreground/70">
+                    {lang === "hu" ? item.hu : item.en}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Képes oszlop (jobbra) - Ez a lényeg! */}
+          {/* Magazinos, aszimmetrikus képelrendezés */}
           <div className="md:col-span-7 relative">
-            <div className="grid grid-cols-6 gap-4 items-end">
+            <div className="grid grid-cols-12 gap-4 items-end">
               
-              {/* Nagy, domináns kép - Enyhe sötétítéssel */}
-              <div className="col-span-6 md:col-span-5 relative group overflow-hidden rounded-sm shadow-xl aspect-[4/3]">
+              {/* 1. Kép: Fő kép (Nagy) */}
+              <div className="col-span-12 md:col-span-10 relative group overflow-hidden rounded-sm shadow-xl aspect-[16/10]">
                 <img 
-                  src={exteriorPath} 
-                  alt="Aura Vendégház Kívülről" 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  src={mainImage} 
+                  alt="Aura Vendégház" 
+                  className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
                   loading="lazy"
                 />
-                {/* Lágy átmenet a kép alján és bal oldalán */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-black/10 opacity-80" />
-                <div className="absolute inset-y-0 left-0 w-1/3 bg-gradient-to-r from-background via-background/10 to-transparent opacity-60" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/30 via-transparent to-transparent opacity-60" />
               </div>
 
-              {/* Kisebb, eltolt kép (Aszimmetria) */}
-              <div className="col-span-3 md:col-span-3 md:-ml-24 md:-mb-16 relative z-20 group overflow-hidden rounded-sm shadow-2xl aspect-[3/4] border-4 border-background">
+              {/* 2. Kép: Tetőtér (Eltolva, kisebb) */}
+              <div className="hidden md:block col-span-5 -mt-32 -ml-12 relative z-20 group overflow-hidden rounded-sm shadow-2xl aspect-square border-[10px] border-background">
                 <img 
-                  src={livingRoomPath} 
-                  alt="Aura Vendégház Nappali" 
+                  src={secondaryImage} 
+                  alt="Aura Attic" 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   loading="lazy"
                 />
-                {/* Lágy sötétítés */}
-                <div className="absolute inset-0 bg-black/20" />
               </div>
 
-              {/* Dekoratív szöveg eltolva (Lifestyle elem, mint a mintán) */}
-              <div className="hidden md:block col-span-3 md:col-span-2 text-right self-end -mb-16 -mr-8">
-                <p className="font-display text-7xl font-extralight text-secondary tracking-tighter opacity-70 rotate-90 origin-bottom-right">
-                  Relax
-                </p>
+              {/* 3. Kép: Külső részlet (Jobb szélre tolva) */}
+              <div className="col-span-6 md:col-span-5 md:-ml-8 relative z-10 group overflow-hidden rounded-sm shadow-lg aspect-[4/5] md:translate-y-12">
+                <img 
+                  src={thirdImage} 
+                  alt="Aura Exterior" 
+                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-black/10 group-hover:opacity-0 transition-opacity" />
+              </div>
+
+              {/* Dekoratív "Aura" felirat függőlegesen */}
+              <div className="hidden lg:block absolute -right-12 top-1/2 -translate-y-1/2">
+                <span className="font-display text-[10rem] font-extralight text-secondary/20 tracking-tighter rotate-90 inline-block select-none">
+                  AURA
+                </span>
               </div>
 
             </div>
