@@ -3,7 +3,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-// --- Assets ---
+// --- Importok maradnak ---
 import heroHouse from "@/assets/aura-vendeghaz.jpg";
 import galleryExterior1 from "@/assets/aura-vendeghaz-e1.jpg";
 import galleryExterior2 from "@/assets/aura-vendeghaz-e2.jpg";
@@ -44,21 +44,6 @@ const imageSources = [
 
 const categoryKeys: Category[] = ["all", "exterior", "living", "rooms", "bathroom"];
 
-// Ez a függvény határozza meg a vizuális ritmust
-const getGridClass = (index: number) => {
-  const layouts = [
-    "md:col-span-8 md:h-[650px] col-span-2 h-[350px]", // Kiemelt nagy kép
-    "md:col-span-4 md:h-[450px] col-span-1 h-[250px] self-end", // Kicsi eltolt
-    "md:col-span-4 md:h-[550px] col-span-1 h-[250px]", 
-    "md:col-span-5 md:h-[400px] col-span-2 h-[300px] md:ml-12", // Fehér térrel eltolva
-    "md:col-span-3 md:h-[350px] col-span-1 h-[200px] mt-[-40px] md:mt-0", // Átfedés érzet
-    "md:col-span-6 md:h-[500px] col-span-2 h-[350px]",
-    "md:col-span-6 md:h-[500px] col-span-1 h-[250px]",
-    "md:col-span-12 md:h-[750px] col-span-2 h-[400px]", // Széles panoráma
-  ];
-  return layouts[index % layouts.length];
-};
-
 const GallerySection = () => {
   const lang = useLang();
   const t = translations.gallery;
@@ -71,6 +56,19 @@ const GallerySection = () => {
   })), [lang, t.imageAlts]);
 
   const filtered = activeCategory === "all" ? images : images.filter((img) => img.category === activeCategory);
+
+  // Dinamikus elrendezés segéd (Desktopra)
+  const getDesktopSpan = (index: number) => {
+    const patterns = [
+      "md:col-span-8 md:h-[500px]", 
+      "md:col-span-4 md:h-[500px]", 
+      "md:col-span-4 md:h-[400px]", 
+      "md:col-span-8 md:h-[400px]",
+      "md:col-span-6 md:h-[450px]", 
+      "md:col-span-6 md:h-[450px]"
+    ];
+    return patterns[index % patterns.length];
+  };
 
   const openLightbox = (index: number) => setLightboxIndex(index);
   const closeLightbox = () => setLightboxIndex(null);
@@ -88,28 +86,26 @@ const GallerySection = () => {
   }, [lightboxIndex, filtered.length]);
 
   return (
-    <section id="gallery" className="bg-[#fcfcfc] py-20 md:py-40 overflow-hidden">
-      <div className="container mx-auto px-6 max-w-[1400px]">
+    <section id="gallery" className="bg-white py-16 md:py-32">
+      <div className="container mx-auto px-6 max-w-7xl">
         
-        {/* Header - Architectural Minimal */}
-        <div className="mb-16 md:mb-32">
-          <p className="font-body text-[10px] tracking-[0.6em] uppercase text-gray-400 mb-4 block animate-fade-in">
+        {/* Header */}
+        <div className="mb-12 md:mb-20">
+          <p className="font-body text-[10px] tracking-[0.4em] uppercase text-gray-500 mb-4 text-center md:text-left">
             {pick(t.label, lang)}
           </p>
-          <h2 className="font-display text-4xl md:text-7xl font-extralight tracking-tighter text-black mb-12">
-            {pick(t.title, lang)}
+          <h2 className="font-display text-3xl md:text-6xl font-light tracking-tight text-black mb-10 text-center md:text-left">
+             {pick(t.title, lang)}
           </h2>
-
-          {/* Szűrő - Mobilon vízszintesen görgethető, hogy ne törjön szét */}
-          <div className="flex items-center gap-8 overflow-x-auto pb-4 scrollbar-hide border-b border-gray-100 no-scrollbar">
+          
+          {/* Szűrők - Mobilon görgethető sáv */}
+          <div className="flex overflow-x-auto md:overflow-visible no-scrollbar -mx-6 px-6 md:mx-0 md:px-0 gap-6 border-b border-gray-100 pb-4">
             {categoryKeys.map((key) => (
               <button
                 key={key}
                 onClick={() => setActiveCategory(key)}
-                className={`font-body text-[10px] tracking-[0.2em] uppercase whitespace-nowrap transition-all duration-500 relative py-2 ${
-                  activeCategory === key
-                    ? "text-black after:content-[''] after:absolute after:bottom-0 after:left-0 after:w-full after:h-[1px] after:bg-black"
-                    : "text-gray-400 hover:text-black"
+                className={`whitespace-nowrap font-body text-[11px] tracking-[0.15em] uppercase transition-colors duration-300 py-2 ${
+                  activeCategory === key ? "text-black border-b border-black" : "text-gray-400 hover:text-black"
                 }`}
               >
                 {pick(t.categories[key], lang)}
@@ -118,65 +114,46 @@ const GallerySection = () => {
           </div>
         </div>
 
-        {/* Responsive Grid System */}
-        <div className="grid grid-cols-2 md:grid-cols-12 gap-4 md:gap-12 items-start">
+        {/* Galéria Grid - Mobilon biztonságos, Desktopon modern */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
           {filtered.map((img, i) => (
             <div
-              key={typeof img.src === 'string' ? img.src : img.src.src}
-              className={`relative overflow-hidden cursor-crosshair group bg-gray-100 ${getGridClass(i)}`}
+              key={typeof img.src === 'string' ? img.src : (img.src as any).src}
+              className={`relative overflow-hidden cursor-pointer group h-[300px] md:h-auto ${getDesktopSpan(i)}`}
               onClick={() => openLightbox(i)}
             >
               <img
-                src={typeof img.src === 'string' ? img.src : img.src.src}
+                src={typeof img.src === 'string' ? img.src : (img.src as any).src}
                 alt={img.alt}
-                className="w-full h-full object-cover transition-all duration-[1.2s] ease-in-out grayscale group-hover:grayscale-0 group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 loading="lazy"
               />
-              {/* Desktop Hover Info */}
-              <div className="absolute inset-0 bg-black/5 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden md:block" />
-              <div className="absolute bottom-8 left-8 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0 hidden md:block">
-                <span className="font-body text-[9px] text-white tracking-[0.4em] uppercase bg-black/30 backdrop-blur-md px-4 py-2">
-                  {img.alt}
-                </span>
-              </div>
+              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
             </div>
           ))}
         </div>
       </div>
 
-      {/* Lightbox - Minimal White Gallery Look */}
+      {/* Lightbox - Megtartva az elegáns fehér hátteret */}
       {lightboxIndex !== null && (
-        <div
-          className="fixed inset-0 z-[100] bg-white/98 backdrop-blur-xl flex items-center justify-center p-4 md:p-20"
-          onClick={closeLightbox}
-        >
-          <button className="absolute top-10 right-10 text-black hover:rotate-90 transition-transform duration-500 z-50">
-            <X className="w-8 h-8 font-thin" />
+        <div className="fixed inset-0 z-[100] bg-white/fb backdrop-blur-xl flex items-center justify-center p-4" onClick={closeLightbox}>
+          <button className="absolute top-6 right-6 p-2 text-black transition-transform hover:rotate-90">
+            <X className="w-8 h-8" strokeWidth={1} />
           </button>
           
-          <button onClick={goPrev} className="absolute left-6 md:left-12 text-black/20 hover:text-black transition-colors hidden sm:block">
-            <ChevronLeft className="w-16 h-16" strokeWidth={0.5} />
+          <button onClick={goPrev} className="absolute left-4 md:left-10 text-black/20 hover:text-black transition-colors">
+            <ChevronLeft className="w-10 h-10 md:w-16 md:h-16" strokeWidth={0.5} />
           </button>
 
-          <div className="relative w-full h-full flex flex-col items-center justify-center">
-             <img
-              src={typeof filtered[lightboxIndex].src === 'string' ? filtered[lightboxIndex].src : filtered[lightboxIndex].src.src}
-              alt={filtered[lightboxIndex].alt}
-              className="max-w-full max-h-[75vh] object-contain shadow-[0_40px_100px_rgba(0,0,0,0.1)]"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <div className="mt-12 text-center space-y-2">
-              <p className="font-display text-lg tracking-widest text-black uppercase">
-                 {filtered[lightboxIndex].alt}
-              </p>
-              <p className="font-body text-[10px] tracking-[0.3em] text-gray-400">
-                 {lightboxIndex + 1} &mdash; {filtered.length}
-              </p>
-            </div>
-          </div>
+          <img
+            src={typeof filtered[lightboxIndex].src === 'string' ? filtered[lightboxIndex].src : (filtered[lightboxIndex].src as any).src}
+            alt={filtered[lightboxIndex].alt}
+            className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm"
+            onClick={(e) => e.stopPropagation()}
+          />
 
-          <button onClick={goNext} className="absolute right-6 md:right-12 text-black/20 hover:text-black transition-colors hidden sm:block">
-            <ChevronRight className="w-16 h-16" strokeWidth={0.5} />
+          <button onClick={goNext} className="absolute right-4 md:right-10 text-black/20 hover:text-black transition-colors">
+            <ChevronRight className="w-10 h-10 md:w-16 md:h-16" strokeWidth={0.5} />
           </button>
         </div>
       )}
