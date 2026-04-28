@@ -12,7 +12,7 @@ const HostSection = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           {/* Portrait */}
           <div className="order-1 md:order-1">
-            <div className="relative aspect-[3/4] w-full max-w-md mx-auto md:mx-0 border border-border bg-muted/30 overflow-hidden">
+            <div className="relative aspect-[3/4] w-full max-w-sm mx-auto md:mx-0 rounded-full border border-border bg-muted/30 overflow-hidden">
               <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground">
                 <User strokeWidth={1} size={64} />
                 <p className="font-body text-[10px] tracking-[0.3em] uppercase">
