@@ -9,9 +9,9 @@ import { Link, useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 
-type Section = "house" | "gallery" | "rules";
+type Section = "house" | "gallery" | "rules" | "host";
 
-type HomeSection = Exclude<Section, "rules">;
+type HomeSection = Exclude<Section, "rules" | "host">;
 
 
 interface HeaderProps {
@@ -27,7 +27,7 @@ interface HeaderProps {
 }
 
 
-const navItems: Section[] = ["house", "gallery", "rules"];
+const navItems: Section[] = ["house", "gallery", "rules", "host"];
 
 
 const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderProps) => {
@@ -51,6 +51,23 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
       if (location.pathname !== "/rules") {
 
         navigate("/rules");
+
+      } else {
+
+        window.scrollTo({ top: 0, behavior: "smooth" });
+
+      }
+
+      return;
+
+    }
+
+
+    if (key === "host") {
+
+      if (location.pathname !== "/host") {
+
+        navigate("/host");
 
       } else {
 
@@ -147,6 +164,8 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
           <button onClick={() => handleNavClick("gallery")}>{pick(translations.nav.gallery, l)}</button>
 
           <button onClick={() => handleNavClick("rules")}>{pick(translations.nav.rules, l)}</button>
+
+          <button onClick={() => handleNavClick("host")}>{pick(translations.nav.host, l)}</button>
 
           <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-primary font-semibold">Airbnb</a>
 
