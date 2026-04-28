@@ -12,11 +12,12 @@ import NotFound from "./pages/NotFound";
 const queryClient = new QueryClient();
 
 const ScrollToTop = () => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
 
   useLayoutEffect(() => {
+    if (hash) return;
     window.scrollTo({ top: 0, left: 0, behavior: "auto" });
-  }, [pathname]);
+  }, [pathname, hash]);
 
   return null;
 };
