@@ -59,11 +59,7 @@ const HeroSection = () => {
 
           <a
 
-            href="https://www.airbnb.hu/rooms/1591647579928631355"
-
-            target="_blank"
-
-            rel="noopener"
+            href="/host"
 
             className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden border border-white/40 hover:border-white/80 transition-all duration-500 animate-fade-in"
 
