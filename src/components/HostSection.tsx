@@ -7,7 +7,7 @@ const HostSection = () => {
   const t = translations.host;
 
   return (
-    <section className="py-20 md:py-32">
+    <section id="host-profile" className="py-20 md:py-32 scroll-mt-20">
       <div className="container mx-auto px-6 md:px-12 lg:px-20 max-w-6xl">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-20 items-center">
           {/* Portrait */}
