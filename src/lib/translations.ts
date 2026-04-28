@@ -6,7 +6,7 @@ export const translations = {
     house: { hu: "Aura Vendégház", en: "Aura Guest House" },
     gallery: { hu: "Galéria", en: "Gallery" },
     rules: { hu: "Házirend", en: "House Rules" },
-    host: { hu: "Házigazda", en: "Host" },
+    host: { hu: "Foglalás", en: "Booking" },
   },
 
   hero: {
@@ -224,14 +224,10 @@ export const translations = {
   },
 
   host: {
-    sectionLabel: { hu: "Bemutatkozás", en: "Introduction" },
-    title: { hu: "A házigazdáról", en: "About the Host" },
+    sectionLabel: { hu: "Foglalás", en: "Booking" },
+    title: { hu: "Vegye fel velünk a kapcsolatot", en: "Get in touch with us" },
     name: { hu: "Vofkori Enikő", en: "Vofkori Enikő" },
     role: { hu: "Házigazda · Aura Vendégház", en: "Host · Aura Guest House" },
-    bio: {
-      hu: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-      en: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\n\nDuis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
-    },
     contactLabel: { hu: "Elérhetőségek", en: "Get in touch" },
     portraitAlt: { hu: "Vofkori Enikő – házigazda", en: "Vofkori Enikő – host" },
     portraitPlaceholder: { hu: "Portré hamarosan", en: "Portrait coming soon" },
