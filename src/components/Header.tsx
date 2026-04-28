@@ -129,6 +129,12 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
 
           </a>
 
+          <a href="https://szallas.hu/aura-vendeghaz-revfulop?checkin=2026-05-21&checkout=2026-05-24&ref=list&adults=2&provision=1&listIndex=0" target="_blank" rel="noopener" className="relative px-3 py-1 border border-foreground/70 text-foreground hover:bg-foreground hover:text-background transition-colors duration-300 tracking-[0.15em] font-semibold">
+
+            Szállás.hu
+
+          </a>
+
         </nav>
 
 
@@ -168,6 +174,8 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
           <button onClick={() => handleNavClick("host")}>{pick(translations.nav.host, l)}</button>
 
           <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-primary font-semibold">Airbnb</a>
+
+          <a href="https://szallas.hu/aura-vendeghaz-revfulop?checkin=2026-05-21&checkout=2026-05-24&ref=list&adults=2&provision=1&listIndex=0" target="_blank" rel="noopener" className="inline-block w-fit px-3 py-1 border border-foreground/70 text-foreground font-semibold">Szállás.hu</a>
 
         </nav>
 
