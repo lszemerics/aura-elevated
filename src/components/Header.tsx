@@ -57,9 +57,12 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
               {pick(translations.nav[key], l)}
             </button>
           ))}
-          <a href="https://www.airbnb.hu/rooms/1591647579928631355" target="_blank" rel="noopener" className="text-primary font-semibold hover:opacity-80 transition-opacity tracking-[0.15em]">
-            Airbnb
-          </a>
+          <Link 
+            to="/host" 
+            className="text-primary font-semibold hover:opacity-80 transition-opacity tracking-[0.15em]"
+          >
+            {lang === "hu" ? "Házigazda" : "The Host"}
+          </Link>
         </nav>
 
         <div className="flex items-center gap-4">
@@ -79,7 +82,13 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
           <button onClick={() => handleNavClick("house")}>{pick(translations.nav.house, l)}</button>
           <button onClick={() => handleNavClick("gallery")}>{pick(translations.nav.gallery, l)}</button>
           <button onClick={() => handleNavClick("rules")}>{pick(translations.nav.rules, l)}</button>
-          <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-primary font-semibold">Airbnb</a>
+          <Link 
+            to="/host" 
+            onClick={() => setMobileOpen(false)}
+            className="text-primary font-semibold"
+          >
+            {lang === "hu" ? "Házigazda" : "The Host"}
+          </Link>
         </nav>
       )}
     </header>
