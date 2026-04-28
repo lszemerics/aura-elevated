@@ -4,6 +4,8 @@ import { useLang } from "@/lib/i18n";
 
 import { translations, pick } from "@/lib/translations";
 
+import { Link } from "react-router-dom";
+
 
 const HeroSection = () => {
 
@@ -57,25 +59,15 @@ const HeroSection = () => {
 
           </div>
 
-          <a
-
-            href="/host"
-
+          <Link
+            to="/host#host-profile"
             className="group relative inline-flex items-center justify-center px-8 py-3 overflow-hidden border border-white/40 hover:border-white/80 transition-all duration-500 animate-fade-in"
-
             style={{ animationDelay: "0.6s" }}>
-
-            
-
             <span className="absolute inset-0 bg-white/10 backdrop-blur-sm translate-y-full group-hover:translate-y-0 transition-transform duration-500" />
-
             <span className="relative font-body text-[11px] tracking-[0.3em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
-
-              {lang === "hu" ? "Kapcsolat" : "Contact"}
-
+              {pick(t.cta, lang)}
             </span>
-
-          </a>
+          </Link>
 
         </div>
 

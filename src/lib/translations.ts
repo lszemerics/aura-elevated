@@ -15,6 +15,7 @@ export const translations = {
       en: "Aura – Where the serenity of Lake Balaton meets modern design.",
     },
     type: { hu: "Vendégház", en: "Guest House" },
+    cta: { hu: "Foglalás", en: "Book Now" },
   },
 
   house: {
