@@ -71,7 +71,7 @@ const HeroSection = () => {
 
             <span className="relative font-body text-[11px] tracking-[0.3em] uppercase text-white/90 group-hover:text-white transition-colors duration-500">
 
-              {lang === "hu" ? "Foglalás" : "Book Now"}
+              {lang === "hu" ? "Kapcsolat" : "Contact"}
 
             </span>
 
