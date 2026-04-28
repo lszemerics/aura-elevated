@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import { useLayoutEffect } from "react";
 import Index from "./pages/Index";
 import Rules from "./pages/Rules"; // Új import
+import Host from "./pages/Host";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -30,6 +31,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/rules" element={<Rules />} />
+          <Route path="/host" element={<Host />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
