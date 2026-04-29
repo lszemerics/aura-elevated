@@ -1,6 +1,7 @@
-import { Mail, Phone, User } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
+import hostPortrait from "@/assets/aura-vendeghaz-host-portrait.jpg";
 
 const HostSection = () => {
   const lang = useLang();
@@ -17,12 +18,12 @@ const HostSection = () => {
 
           {/* Oval portrait */}
           <div className="relative w-56 h-72 md:w-64 md:h-80 rounded-full border border-border bg-muted/30 overflow-hidden">
-            <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 text-muted-foreground">
-              <User strokeWidth={1} size={56} />
-              <p className="font-body text-[10px] tracking-[0.3em] uppercase px-4 text-center">
-                {pick(t.portraitPlaceholder, lang)}
-              </p>
-            </div>
+            <img
+              src={hostPortrait}
+              alt={pick(t.portraitAlt, lang)}
+              className="absolute inset-0 w-full h-full object-cover"
+              loading="lazy"
+            />
           </div>
 
           {/* Title */}
