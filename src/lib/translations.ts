@@ -232,7 +232,7 @@ export const translations = {
     portraitAlt: { hu: "Vofkori Enikő – házigazda", en: "Vofkori Enikő – host" },
     portraitPlaceholder: { hu: "Portré hamarosan", en: "Portrait coming soon" },
     email: "aura.vofi@gmail.com",
-    phone: "+36 20 509 8419",
+    phone: "+36 30 544 8908",
   },
 } as const;
 
