@@ -21,7 +21,7 @@ export const translations = {
   house: {
     sectionLabel: { hu: "A vendégház", en: "The guest house" },
     heading1: { hu: "Modern kényelem,", en: "Modern comfort," },
-    heading2: { hu: "balatoni nyugalom", en: "lakeside tranquillity" },
+    heading2: { hu: "Balatoni nyugalom", en: "Lakeside tranquillity" },
     intro: {
       hu: "Új építésű, modern kialakítású, nagy telken tágas ház Révfülöp szívében a csendes pihenés lehetőségével. Az állomások, strandok, sétány, cukrászda és éttermek gyalogosan elérhetők 3–10 perc sétára, mégis egy nyugodt, csendes, kellemes környezetbe térhetnek vissza a nap végén. Kíválóan alkalmas családi, több generációs akár kerti sütögetés melletti együttlétre.",
       en: "Newly built, modern house on a large plot in the heart of Révfülöp, offering the perfect opportunity for quiet relaxation. The stations, beaches, promenade, confectionery, and restaurants are all within a 3 to 10-minute walk, yet you can return to a calm, peaceful, and pleasant environment at the end of the day. It is excellent for family or multi-generational gatherings, even alongside a backyard barbecue.",
