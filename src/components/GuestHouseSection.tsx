@@ -2,16 +2,49 @@ import { useState } from "react";
 import interiorLiving from "@/assets/aura-vendeghaz-living.jpg";
 import interiorAttic from "@/assets/aura-vendeghaz-attic.jpg";
 import gardenImg from "@/assets/aura-vendeghaz-garden.jpg";
-import { Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame } from "lucide-react";
+import { Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame, Banknote } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-// Bővítve a Flame (Szauna) ikonnal a tömb végén
-const featureIcons = [Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame];
+// Az első helyre beszúrtuk a Banknote (Ár) ikont
+const featureIcons = [Banknote, Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame];
 
 const GuestHouseSection = () => {
   const lang = useLang();
   const t = translations.house;
+
+  // Összeállítjuk a megjelenítendő elemek listáját
+  let displayFeatures = [];
+
+  // 1. Első lépésként manuálisan beszúrjuk az ÁR kártyát a legelső helyre
+  displayFeatures.push({
+    hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház (Újévkor egyedi ár)" },
+    en: { title: "PRICE", desc: "160 000 HUF / night / entire house (Custom price for New Year)" }
+  });
+
+  // 2. Utána hozzáfűzzük a translations fájlból jövő alapértelmezett elemeket
+  if (t.features && Array.isArray(t.features)) {
+    displayFeatures = [...displayFeatures, ...t.features];
+  }
+
+  // 3. Biztonsági ellenőrzés: ha a Szauna még nem lenne benne a translations.ts-ben, manuálisan rátesszük a végére
+  const hasSauna = displayFeatures.some(f => {
+    const data = f[lang] || f;
+    return data.title?.toUpperCase() === "SZAUNA" || data.title?.toUpperCase() === "SAUNA";
+  });
+
+  if (!hasSauna) {
+    displayFeatures.push({
+      hu: { title: "SZAUNA", desc: "6 fő részére" },
+      en: { title: "SAUNA", desc: "For 6 people" }
+    });
+  }
+
+  // 4. PRÉMIUM VIZUÁLIS EGYENSÚLY: 10 elemed van, de 4 oszlopos rácsban dolgozunk (3x4 = 12 elem kell).
+  // Feltöltjük üres, minimalista placeholder kártyákkal a rács végét, hogy ne legyen aszimmetrikus törés.
+  while (displayFeatures.length < 12) {
+    displayFeatures.push({ isPlaceholder: true });
+  }
 
   return (
     <section id="house" className="pt-12">
@@ -21,7 +54,6 @@ const GuestHouseSection = () => {
           {pick(t.sectionLabel, lang)}
         </p>
         
-        {/* JAVÍTOTT CÍMSOR: Lecseréltük az <em> tagot <span> tagre */}
         <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground mb-10">
           {pick(t.heading1, lang)}<br />
           <span className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
@@ -34,17 +66,29 @@ const GuestHouseSection = () => {
         </p>
       </div>
 
-      {/* Feature Grid - Módosítva 3 oszloposra (md:grid-cols-3) a 9 elem egyensúlyáért */}
+      {/* Feature Grid - Újra 4 oszlopos (md:grid-cols-4) a tökéletes 12-es mátrix elrendezésért */}
       <div className="container mx-auto px-6 pb-24">
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
-          {t.features.map((f, i) => {
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+          {displayFeatures.map((f, i) => {
+            // Ha ez egy üres dizájn-helyörző kártya a szimmetria kedvéért
+            if (f.isPlaceholder) {
+              return (
+                <div key={`space-${i}`} className="hidden md:block p-6 bg-card/10 border border-border/20 opacity-30 pointer-events-none" />
+              );
+            }
+
             const Icon = featureIcons[i];
-            const data = f[lang];
+            const data = f[lang] || f;
+            
             return (
-              <div key={i} className="text-center p-6 bg-card border border-border hover:border-primary/30 transition-all duration-300 group">
-                <Icon className="w-5 h-5 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" strokeWidth={1.5} />
+              <div key={i} className="text-center p-6 bg-card border border-border hover:border-primary/30 transition-all duration-300 group flex flex-col justify-center items-center min-h-[140px]">
+                {Icon && <Icon className="w-5 h-5 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" strokeWidth={1.5} />}
                 <h3 className="font-body text-xs font-semibold tracking-wider uppercase text-foreground mb-1">{data.title}</h3>
-                <p className="font-body text-[11px] text-muted-foreground">{data.desc}</p>
+                
+                {/* Sortörések és zárójelek formázása az árhoz */}
+                <p className="font-body text-[11px] text-muted-foreground whitespace-pre-line max-w-[180px] mx-auto leading-normal">
+                  {data.desc}
+                </p>
               </div>
             );
           })}
