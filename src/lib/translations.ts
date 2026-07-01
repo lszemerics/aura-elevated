@@ -23,8 +23,8 @@ export const translations = {
     heading1: { hu: "Modern kényelem,", en: "Modern comfort," },
     heading2: { hu: "balatoni nyugalom", en: "lakeside tranquillity" },
     intro: {
-      hu: "Új építésű, modern kialakítású, tágas ház Révfülöp szívében. Az állomások, strandok, sétány és éttermek gyalogosan elérhetők 5–10 perc sétára, mégis egy nyugodt, kellemes környezetbe térhetnek vissza a nap végén.",
-      en: "A newly built, spacious modern house in the heart of Révfülöp. The train station, beaches, promenade, and restaurants are all within a 5–10 minute walk, yet you return to a peaceful, relaxing retreat at the end of each day.",
+      hu: "Új építésű, modern kialakítású, nagy telken tágas ház Révfülöp szívében a csendes pihenés lehetőségével. Az állomások, strandok, sétány, cukrászda és éttermek gyalogosan elérhetők 3–10 perc sétára, mégis egy nyugodt, csendes, kellemes környezetbe térhetnek vissza a nap végén. Kíválóan alkalmas családi, több generációs akár kerti sütögetés melletti együttlétre.",
+      en: "Newly built, modern house on a large plot in the heart of Révfülöp, offering the perfect opportunity for quiet relaxation. The stations, beaches, promenade, confectionery, and restaurants are all within a 3 to 10-minute walk, yet you can return to a calm, peaceful, and pleasant environment at the end of the day. It is excellent for family or multi-generational gatherings, even alongside a backyard barbecue.",
     },
     features: [
       { hu: { title: "4+1 szoba", desc: "14–16 fő részére, francia ágyak" }, en: { title: "4+1 rooms", desc: "For 14–16 guests, king-size beds" } },
