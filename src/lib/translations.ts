@@ -6,7 +6,7 @@ export const translations = {
     house: { hu: "Aura Vendégház", en: "Aura Guest House" },
     gallery: { hu: "Galéria", en: "Gallery" },
     rules: { hu: "Házirend", en: "House Rules" },
-    host: { hu: "Foglalás", en: "Booking" },
+    host: { hu: "Foglalás", en: "Booking" }, // VISSZACSINÁLVA: Maradt az eredeti felirat
   },
 
   hero: {
@@ -23,7 +23,7 @@ export const translations = {
     heading1: { hu: "Modern kényelem", en: "Modern comfort" },
     heading2: { hu: "Balatoni nyugalom", en: "Lakeside tranquillity" },
     intro: {
-      hu: "Új építésű, modern kialakítású, nagy telken tágas ház Révfülöp szívében a csendes pihenés lehetőségével. Az állomások, strandok, sétány, cukrászda és éttermek gyalogosan elérhetők 3–10 perc sétára, mégis egy nyugodt, csendes, kellemes környezetbe térhetnek vissza a nap végén. Kíválóan alkalmas családi, több generációs akár kerti sütögetés melletti együttlétre.",
+      hu: "Új építésű, modern kialakítású, nagy telken tágas ház Révfülöp szívében a csendes pihenés lehetőségével. Az állomások, strandok, sétány, cukrászda és éttermek gyalogosan elérhetők 3–10 perc sétára, mégis egy nyugodt, csendes, kellemes environmentsbe térhetnek vissza a nap végén. Kíválóan alkalmas családi, több generációs akár kerti sütögetés melletti együttlétre.",
       en: "Newly built, modern house on a large plot in the heart of Révfülöp, offering the perfect opportunity for quiet relaxation. The stations, beaches, promenade, confectionery, and restaurants are all within a 3 to 10-minute walk, yet you can return to a calm, peaceful, and pleasant environment at the end of the day. It is excellent for family or multi-generational gatherings, even alongside a backyard barbecue.",
     },
     features: [
@@ -35,6 +35,7 @@ export const translations = {
       { hu: { title: "Parkolás", desc: "Akár 6-8 autónak" }, en: { title: "Parking", desc: "Space for 6–8 cars" } },
       { hu: { title: "Felszerelt konyha", desc: "Mosogatógép, Nespresso, air fryer" }, en: { title: "Fully equipped kitchen", desc: "Dishwasher, Nespresso, air fryer" } },
       { hu: { title: "Szórakozás", desc: "Biliárd, vetítő, nagy tetőtér" }, en: { title: "Entertainment", desc: "Billiards, projector, spacious loft" } },
+      { hu: { title: "Szauna", desc: "6 fő részére" }, en: { title: "Sauna", desc: "For 6 people" } }, // Integrált Szauna szekció
     ],
     livingTitle: { hu: "Nappali & Konyha", en: "Living Room & Kitchen" },
     livingItems: {
@@ -128,7 +129,7 @@ export const translations = {
       bathroom: { hu: "Fürdőszobák", en: "Bathrooms" },
     },
     imageAlts: [
-      { hu: "A ház kívülről – homlokzat", en: "House exterior – facade" },
+      { hu: "A house kívülről – homlokzat", en: "House exterior – facade" },
       { hu: "Kert – sziklakert felülről", en: "Garden – rock garden from above" },
       { hu: "Kert – ösvény nyáron", en: "Garden – pathway in summer" },
       { hu: "Kert – ösvény és sziklák", en: "Garden – pathway and rocks" },
@@ -236,7 +237,6 @@ export const translations = {
   },
 } as const;
 
-// Helper to pick the right language value from a { hu, en } object
 export function pick<T>(obj: { hu: T; en: T }, lang: Lang): T {
   return obj[lang];
 }
