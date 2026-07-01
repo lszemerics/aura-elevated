@@ -27,6 +27,10 @@ export const translations = {
       en: "Newly built, modern house on a large plot in the heart of Révfülöp, offering the perfect opportunity for quiet relaxation. The stations, beaches, promenade, confectionery, and restaurants are all within a 3 to 10-minute walk, yet you can return to a calm, peaceful, and pleasant environment at the end of the day. It is excellent for family or multi-generational gatherings, even alongside a backyard barbecue.",
     },
     features: [
+      { 
+        hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház\n(Újévkor egyedi ár)" }, 
+        en: { title: "PRICE", desc: "160 000 HUF / night / entire house\n(Custom price for New Year)" } 
+      }, // SIKERESEN HOZZÁADVA: Az Ár kártya lett a legelső elem
       { hu: { title: "4+1 szoba", desc: "14–16 fő részére, francia ágyak" }, en: { title: "4+1 rooms", desc: "For 14–16 guests, king-size beds" } },
       { hu: { title: "Klíma", desc: "Hűtő-fűtő klíma egész évben" }, en: { title: "Air conditioning", desc: "Heating & cooling all year round" } },
       { hu: { title: "Gyerekbarát", desc: "Etetőszék, utazóágy, babakonyha" }, en: { title: "Child-friendly", desc: "High chair, travel cot, play kitchen" } },
@@ -197,7 +201,7 @@ export const translations = {
         en: { title: "Air conditioning", items: ["Use only in enclosed rooms", "Recommended summer setting: 23–24°C", "Winter maximum: 22°C; primary heating via gas boiler (thermostat max. 23°C)", "Please do not leave the air conditioning running while you are away — the space cools down very quickly upon arrival", "Filter cleaning is handled by the host only"] },
       },
       {
-        hu: { title: "Biztonság és felelősség", items: ["Okozott kárt haladéktalanul jelezni kell", "A vendég felel az általa okozott károkért", "Szállásadó nem felel az őrizetlenül hagyott értéktárgyakért", "Elsősegély-felszerelés a konyhában található"] },
+        hu: { title: "Biztonság és felelősség", items: ["Okozott kárt haladéktalanul jelezni kell", "A vendég felel az általa注目oztott károkért", "Szállásadó nem felel az őrizetlenül hagyott értéktárgyakért", "Elsősegély-felszerelés a konyhában található"] },
         en: { title: "Safety & liability", items: ["Any damage must be reported immediately", "Guests are liable for damage caused by themselves or their visitors", "The host is not responsible for valuables left unattended", "A first-aid kit is located in the kitchen"] },
       },
       {
