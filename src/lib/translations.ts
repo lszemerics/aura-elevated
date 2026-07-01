@@ -30,7 +30,7 @@ export const translations = {
       { hu: { title: "4+1 szoba", desc: "14–16 fő részére, francia ágyak" }, en: { title: "4+1 rooms", desc: "For 14–16 guests, king-size beds" } },
       { hu: { title: "Klíma", desc: "Hűtő-fűtő klíma egész évben" }, en: { title: "Air conditioning", desc: "Heating & cooling all year round" } },
       { hu: { title: "Gyerekbarát", desc: "Etetőszék, utazóágy, babakonyha" }, en: { title: "Child-friendly", desc: "High chair, travel cot, play kitchen" } },
-      { hu: { title: "2500 m² kert", desc: "Csendes belső telek, cseresznyefák" }, en: { title: "2,500 m² garden", desc: "Secluded plot with cherry trees" } },
+      { hu: { title: "2500 m² kert", desc: "Csendes, grill, bogrács" }, en: { title: "2,500 m² garden", desc: "Peaceful, BBQ, outdoor cooking" } },
       { hu: { title: "WiFi & Okos TV", desc: "Projektor mozizáshoz" }, en: { title: "WiFi & Smart TV", desc: "Projector for movie nights" } },
       { hu: { title: "Parkolás", desc: "Akár 6-8 autónak" }, en: { title: "Parking", desc: "Space for 6–8 cars" } },
       { hu: { title: "Felszerelt konyha", desc: "Mosogatógép, Nespresso, air fryer" }, en: { title: "Fully equipped kitchen", desc: "Dishwasher, Nespresso, air fryer" } },
@@ -41,7 +41,7 @@ export const translations = {
     livingItems: {
       hu: [
         "Egy légterű modern konyha–nappali (40 m²)",
-        "12 férőhelyes étkező asztal, igény szerint bővíthető",
+        "10 férőhelyes étkező asztal, igény szerint bővíthető",
         "Felszerelt konyha: mosogatógép, hűtő, mikro, air fryer, Nespresso, vízforraló, kenyérpirító",
         "Okos TV, projektor mozizás élményhez",
         "4 különálló hálószoba, 2–2 főnek",
@@ -157,51 +157,51 @@ export const translations = {
     },
     cards: [
       {
-        hu: { title: "Érkezés és távozás", items: ["Érkezés: 15:00 órától", "Távozás: 12:00 óráig", "Késői távozás / korai érkezés: előzetes egyeztetéssel lehetséges", "Érkezéskor ellenőrizzék a ház állapotát, jelezzék az esetleges hibákat"] },
-        en: { title: "Check-in & Check-out", items: ["Check-in: from 3:00 PM", "Check-out: by 12:00 PM", "Late check-out / early check-in: available upon prior arrangement", "Please inspect the property on arrival and report any issues"] },
+        hu: { title: "Érkezés és távozás", items: ["Érkezés: 16:00 órától", "Távozás: 11:00 óráig", "Késői távozás / korai érkezés: előzetes egyeztetéssel lehetséges", "Érkezéskor ellenőrizzék a ház állapotát, jelezzék az esetleges hibákat"] },
+        en: { title: "Check-in & Check-out", items: ["Check-in: from 4:00 PM", "Check-out: by 11:00 PM", "Late check-out / early check-in: available upon prior arrangement", "Please inspect the property on arrival and report any issues"] },
       },
       {
         hu: { title: "Kulcsok", items: ["A kulcs elvesztése esetén a zárcsere költsége a vendéget terheli", "Távozáskor a kulcsokat a megbeszélt helyen kell hagyni"] },
         en: { title: "Keys", items: ["The cost of lock replacement due to lost keys is the guest's responsibility", "Please leave the keys in the designated location upon departure"] },
       },
       {
-        hu: { title: "A ház használata", items: ["Távozáskor minden ajtót és ablakot zárjanak be", "A berendezési tárgyakat rendeltetésszerűen használják"] },
-        en: { title: "Property usage", items: ["Please close all doors and windows when leaving", "Use all furnishings and equipment for their intended purpose"] },
+        hu: { title: "A ház használata", items: ["A berendezési tárgyakat rendeltetésszerűen használják", "Távozáskor minden ajtót és ablakot zárjanak be"] },
+        en: { title: "Property usage", items: ["Use all furnishings and equipment for their intended purpose", "Please close all doors and windows when leaving"] },
       },
       {
         hu: { title: "Dohányzás", items: ["A házban dohányozni tilos", "Csak a kijelölt kültéri helyen megengedett", "Nyílt láng használata (gyertya stb.) a házban nem engedélyezett"] },
         en: { title: "Smoking", items: ["Smoking is strictly prohibited indoors", "Smoking is only permitted in the designated outdoor area", "Open flames (candles, etc.) are not allowed inside the house"] },
       },
       {
-        hu: { title: "Csend és nyugalom", items: ["Tartsák tiszteletben a szomszédok nyugalmát", "Csendes időszak: 22:00 – 10:00", "Zene, hangos beszéd kültéren ezen időszakban nem megengedett"] },
-        en: { title: "Quiet hours", items: ["Please respect the neighbours' peace and privacy", "Quiet hours: 10:00 PM – 10:00 AM", "Music, loud conversation or other noise outdoors is not permitted during quiet hours"] },
+        hu: { title: "Csend és nyugalom", items: ["Tartsák tiszteletben a szomszédok nyugalmát", "Csendes időszak: 22:00 – 10:00", "Kihangosított zene a kertben nem megengedett "] },
+        en: { title: "Quiet hours", items: ["Please respect the neighbours' peace and privacy", "Quiet hours: 10:00 PM – 10:00 AM", "Loud music / speakers are not allowed in the garden"] },
       },
       {
         hu: { title: "Háziállatok", items: ["Háziállat NEM hozható"] },
         en: { title: "Pets", items: ["Pets are NOT permitted"] },
       },
       {
-        hu: { title: "Grillezés és tűzrakás", items: ["Grillezés kizárólag a kijelölt kültéri helyen", "Nyílt láng beltéren tilos", "Soha ne hagyják felügyelet nélkül a tüzet", "Tűzgyújtási tilalom esetén grillezés tilos"] },
-        en: { title: "Barbecue & open fire", items: ["Barbecuing is only permitted in the designated outdoor area", "Open flames are strictly prohibited indoors", "Never leave a fire or grill unattended", "Barbecuing is prohibited during fire bans"] },
+        hu: { title: "Grillezés és tűzrakás", items: ["Grillezés kizárólag a kijelölt kültéri helyen", "Nyílt láng beltéren tilos", "Soha ne hagyják felügyelet nélkül a tüzet", "Tűzgyujtási tilalom esetén csak a grillezés és palackgázas bográcsozás lehetséges"] },
+        en: { title: "Barbecue & open fire", items: ["Barbecuing is only permitted in the designated outdoor area", "Open flames are strictly prohibited indoors", "Never leave a fire or grill unattended", "In the event of a fire ban, only grilling and gas-powered cauldron cooking are permitted"] },
       },
       {
         hu: { title: "Szemétkezelés", items: ["Háztartási hulladékot a kijelölt kukákban helyezzék el", "Papír, műanyag, üveg és fém különválogatása kötelező", "Távozáskor a szemetet kérjük kivinni"] },
         en: { title: "Waste disposal", items: ["Place household waste in the designated bins", "Recycling (paper, plastic, glass, metal) is mandatory", "Please dispose of all rubbish upon departure"] },
       },
       {
-        hu: { title: "Közművek", items: ["Takarékoskodjanak a vízzel, gázzal és árammal", "Klímát és fűtést csak csukott ablaknál használják", "Meghibásodást azonnal jelezzék a házigazdának"] },
-        en: { title: "Utilities", items: ["Please conserve water, gas, and electricity", "Use air conditioning and heating only with windows closed", "Report any malfunctions to the host immediately"] },
+        hu: { title: "Közművek", items: ["Takarékoskodjanak a vízzel és árammal", "A klímát csak csukott ajtó-ablaknál és otthon tartozkodáskor használják", "Meghibásodást azonnal jelezzék a házigazdának"] },
+        en: { title: "Utilities", items: ["Please conserve water and electricity", "Please only use the air conditioning when doors and windows are closed, and only while you are at home", "Report any malfunctions to the host immediately"] },
       },
       {
-        hu: { title: "Klíma használat", items: ["Csak zárt helyiségben használják", "Nyári javasolt hőmérséklet: 23–24°C", "Télen max. 22°C, fűtés a gázkazánnal (termosztát max. 23°C)", "Ne hagyják üresen bekapcsolva", "Szűrő tisztítást csak a házigazda végzi"] },
-        en: { title: "Air conditioning", items: ["Use only in enclosed rooms", "Recommended summer setting: 23–24°C", "Winter maximum: 22°C; primary heating via gas boiler (thermostat max. 23°C)", "Do not leave the unit running in empty rooms", "Filter cleaning is handled by the host only"] },
+        hu: { title: "Klíma használat", items: ["Csak zárt helyiségben használják", "Nyári javasolt hőmérséklet: 23–24°C", "Télen max. 22°C, fűtés a gázkazánnal (termosztát max. 23°C)", "Távollétben ne hagyják a klímát bekapcsolva – érkezéskor hamar lehűthető a tér", "Szűrő tisztítást csak a házigazda végzi"] },
+        en: { title: "Air conditioning", items: ["Use only in enclosed rooms", "Recommended summer setting: 23–24°C", "Winter maximum: 22°C; primary heating via gas boiler (thermostat max. 23°C)", "Please do not leave the air conditioning running while you are away — the space cools down very quickly upon arrival", "Filter cleaning is handled by the host only"] },
       },
       {
         hu: { title: "Biztonság és felelősség", items: ["Okozott kárt haladéktalanul jelezni kell", "A vendég felel az általa okozott károkért", "Szállásadó nem felel az őrizetlenül hagyott értéktárgyakért", "Elsősegély-felszerelés a konyhában található"] },
         en: { title: "Safety & liability", items: ["Any damage must be reported immediately", "Guests are liable for damage caused by themselves or their visitors", "The host is not responsible for valuables left unattended", "A first-aid kit is located in the kitchen"] },
       },
       {
-        hu: { title: "Kapcsolattartás", items: ["Telefon: +36 20 509 8419", "E-mail: aura.vofi@gmail.com", "Probléma, kérdés esetén keressék a házigazdát"] },
+        hu: { title: "Kapcsolattartás", items: ["Telefon: +36 30 544 8908", "E-mail: aura.vofi@gmail.com", "Probléma, kérdés esetén keressék a házigazdát"] },
         en: { title: "Contact", items: ["Phone: +36 20 509 8419", "Email: aura.vofi@gmail.com", "Please contact the host for any questions or issues"] },
       },
     ],
