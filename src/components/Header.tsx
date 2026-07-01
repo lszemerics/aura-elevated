@@ -14,7 +14,6 @@ interface HeaderProps {
   onLangChange: (lang: "hu" | "en") => void;
 }
 
-// Kivesszük a 'host'-ot a ciklusból, hogy külön egyedi dizájnt (keretet) adhassunk neki
 const navItems: Exclude<Section, "host">[] = ["house", "gallery", "rules"];
 
 const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderProps) => {
@@ -68,20 +67,20 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
             </button>
           ))}
           
-          <a href="https://www.airbnb.hu/rooms/1591647579928631355" target="_blank" rel="noopener" className="text-primary font-semibold hover:opacity-80 transition-opacity tracking-[0.15em]">
+          <a href="https://www.airbnb.hu/rooms/1591647579928631355" target="_blank" rel="noopener" className="text-muted-foreground/70 hover:text-foreground transition-colors tracking-[0.15em] text-[10px]">
             Airbnb
           </a>
-          <a href="https://szallas.hu/aura-vendeghaz-revfulop?checkin=2026-05-21&checkout=2026-05-24&ref=list&adults=2&provision=1&listIndex=0" target="_blank" rel="noopener" className="text-foreground font-semibold hover:opacity-70 transition-opacity tracking-[0.15em]">
+          <a href="https://szallas.hu/aura-vendeghaz-revfulop?checkin=2026-05-21&checkout=2026-05-24&ref=list&adults=2&provision=1&listIndex=0" target="_blank" rel="noopener" className="text-muted-foreground/70 hover:text-foreground transition-colors tracking-[0.15em] text-[10px]">
             Szállás.hu
           </a>
 
-          {/* BEKERETEZETT HÁZIGAZDA FÜL DESKTOPON */}
+          {/* KIEMELT, PRÉMIUM FÓKUSZÚ FOGLALÁS GOMB DESKTOPON */}
           <button
             onClick={() => handleNavClick("host")}
-            className={`px-4 py-2 border transition-all duration-300 tracking-[0.15em] ml-2 rounded-none ${
+            className={`px-5 py-2.5 transition-all duration-300 tracking-[0.2em] ml-2 rounded-none font-medium text-[10px] ${
               activeSection === "host"
-                ? "border-primary text-foreground bg-primary/5"
-                : "border-foreground/30 text-muted-foreground hover:text-foreground hover:border-foreground"
+                ? "bg-foreground text-background shadow-lg"
+                : "bg-foreground text-background hover:bg-foreground/90 hover:scale-[1.02] active:scale-[0.98] shadow-sm"
             }`}
           >
             {pick(translations.nav.host, l)}
@@ -106,16 +105,16 @@ const Header = ({ activeSection, onSectionChange, lang, onLangChange }: HeaderPr
           <button onClick={() => handleNavClick("gallery")} className="text-left">{pick(translations.nav.gallery, l)}</button>
           <button onClick={() => handleNavClick("rules")} className="text-left">{pick(translations.nav.rules, l)}</button>
           
-          <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-primary font-semibold text-left">Airbnb</a>
-          <a href="https://szallas.hu/aura-vendeghaz-revfulop?checkin=2026-05-21&checkout=2026-05-24&ref=list&adults=2&provision=1&listIndex=0" target="_blank" rel="noopener" className="text-foreground font-semibold text-left">Szállás.hu</a>
+          <a href="https://www.airbnb.hu/rooms/1591647579928631355" className="text-muted-foreground text-left text-xs">Airbnb</a>
+          <a href="https://szallas.hu/aura-vendeghaz-revfulop?checkin=2026-05-21&checkout=2026-05-24&ref=list&adults=2&provision=1&listIndex=0" target="_blank" rel="noopener" className="text-muted-foreground text-left text-xs">Szállás.hu</a>
           
-          {/* BEKERETEZETT HÁZIGAZDA FÜL MOBILON */}
+          {/* KIEMELT FOGLALÁS GOMB MOBILON */}
           <button 
             onClick={() => handleNavClick("host")} 
-            className={`px-4 py-3 border text-center font-semibold tracking-[0.15em] transition-all rounded-none ${
+            className={`px-4 py-3.5 text-center font-semibold tracking-[0.2em] transition-all rounded-none text-xs ${
               activeSection === "host"
-                ? "border-primary text-foreground bg-primary/5"
-                : "border-foreground/30 text-foreground"
+                ? "bg-foreground text-background"
+                : "bg-foreground text-background active:bg-foreground/90"
             }`}
           >
             {pick(translations.nav.host, l)}
