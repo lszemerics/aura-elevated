@@ -17,8 +17,8 @@ const GuestHouseSection = () => {
 
   // 1. Ár kártya beszúrása legelőre
   displayFeatures.push({
-    hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház\n(Újévkor egyedi ár)" },
-    en: { title: "PRICE", desc: "160 000 HUF / night / entire house\n(Custom price for New Year)" }
+    hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház\n(16 fő felett és újévkor egyedi ár)" },
+    en: { title: "PRICE", desc: "160 000 HUF / night / entire house\n(Custom price for New Year and above 16 person)" }
   });
 
   // 2. Alapértelmezett elemek hozzáadása
