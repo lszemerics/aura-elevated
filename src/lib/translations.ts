@@ -197,8 +197,8 @@ export const translations = {
         en: { title: "Utilities", items: ["Please conserve water and electricity", "Please only use the air conditioning when doors and windows are closed, and only while you are at home", "Report any malfunctions to the host immediately"] },
       },
       {
-        hu: { title: "Klíma használat", items: ["Csak zárt helyiségben használják", "Nyári javasolt hőmérséklet: 23–24°C", "Télen max. 22°C, fűtés a gázkazánnal (termosztát max. 23°C)", "Távollétben ne hagyják a klímát bekapcsolva – érkezéskor hamar lehűthető a tér", "Szűrő tisztítást csak a házigazda végzi"] },
-        en: { title: "Air conditioning", items: ["Use only in enclosed rooms", "Recommended summer setting: 23–24°C", "Winter maximum: 22°C; primary heating via gas boiler (thermostat max. 23°C)", "Please do not leave the air conditioning running while you are away — the space cools down very quickly upon arrival", "Filter cleaning is handled by the host only"] },
+        hu: { title: "Klíma használat", items: ["Csak zárt helyiségben használják", "Nyári javasolt hőmérséklet: 23–24°C", "Télen max. 22°C, fűtés a gázkazánnal", "Távollétben ne hagyják a klímát bekapcsolva – érkezéskor hamar lehűthető a tér", "Szűrő tisztítást csak a házigazda végzi"] },
+        en: { title: "Air conditioning", items: ["Use only in enclosed rooms", "Recommended summer setting: 23–24°C", "Winter maximum: 22°C; primary heating via gas boiler", "Please do not leave the air conditioning running while you are away — the space cools down very quickly upon arrival", "Filter cleaning is handled by the host only"] },
       },
       {
         hu: { title: "Biztonság és felelősség", items: ["Okozott kárt haladéktalanul jelezni kell", "A vendég felel az általa注目oztott károkért", "Szállásadó nem felel az őrizetlenül hagyott értéktárgyakért", "Elsősegély-felszerelés a konyhában található"] },
