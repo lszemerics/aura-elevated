@@ -201,7 +201,7 @@ export const translations = {
         en: { title: "Air conditioning", items: ["Use only in enclosed rooms", "Recommended summer setting: 23–24°C", "Winter maximum: 22°C; primary heating via gas boiler", "Please do not leave the air conditioning running while you are away — the space cools down very quickly upon arrival", "Filter cleaning is handled by the host only"] },
       },
       {
-        hu: { title: "Biztonság és felelősség", items: ["Okozott kárt haladéktalanul jelezni kell", "A vendég felel az általa注目oztott károkért", "Szállásadó nem felel az őrizetlenül hagyott értéktárgyakért", "Elsősegély-felszerelés a konyhában található"] },
+        hu: { title: "Biztonság és felelősség", items: ["Okozott kárt haladéktalanul jelezni kell", "A vendég felel az általa oztott károkért", "Szállásadó nem felel az őrizetlenül hagyott értéktárgyakért", "Elsősegély-felszerelés a konyhában található"] },
         en: { title: "Safety & liability", items: ["Any damage must be reported immediately", "Guests are liable for damage caused by themselves or their visitors", "The host is not responsible for valuables left unattended", "A first-aid kit is located in the kitchen"] },
       },
       {
