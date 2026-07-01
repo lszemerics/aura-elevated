@@ -1,3 +1,4 @@
+import { useState } from "react";
 import interiorLiving from "@/assets/aura-vendeghaz-living.jpg";
 import interiorAttic from "@/assets/aura-vendeghaz-attic.jpg";
 import gardenImg from "@/assets/aura-vendeghaz-garden.jpg";
@@ -18,10 +19,15 @@ const GuestHouseSection = () => {
         <p className="font-body text-xs tracking-[0.4em] uppercase text-primary mb-8">
           {pick(t.sectionLabel, lang)}
         </p>
+        
+        {/* JAVÍTOTT CÍMSOR: Lecseréltük az <em> tagot <span> tagre */}
         <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground mb-10">
           {pick(t.heading1, lang)}<br />
-          <em className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground mb-10">{pick(t.heading2, lang)}</em>
+          <span className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground">
+            {pick(t.heading2, lang)}
+          </span>
         </h2>
+        
         <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
           {pick(t.intro, lang)}
         </p>
