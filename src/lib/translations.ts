@@ -34,7 +34,7 @@ export const translations = {
       { hu: { title: "4+1 szoba", desc: "14–16 fő részére, francia ágyak" }, en: { title: "4+1 rooms", desc: "For 14–16 guests, king-size beds" } },
       { hu: { title: "Klíma", desc: "Hűtő-fűtő klíma egész évben" }, en: { title: "Air conditioning", desc: "Heating & cooling all year round" } },
       { hu: { title: "Gyerekbarát", desc: "Etetőszék, utazóágy, babakonyha" }, en: { title: "Child-friendly", desc: "High chair, travel cot, play kitchen" } },
-      { hu: { title: "2500 m² kert", desc: "Csendes, grill, bogrács" }, en: { title: "2,500 m² garden", desc: "Peaceful, BBQ, outdoor cooking" } },
+      { hu: { title: "2500 m² kert", desc: "Csendes belső udvar, grill, bogrács" }, en: { title: "2,500 m² garden", desc: "Peaceful garden, BBQ, outdoor cooking" } },
       { hu: { title: "WiFi & Okos TV", desc: "Projektor mozizáshoz" }, en: { title: "WiFi & Smart TV", desc: "Projector for movie nights" } },
       { hu: { title: "Parkolás", desc: "Akár 6-8 autónak" }, en: { title: "Parking", desc: "Space for 6–8 cars" } },
       { hu: { title: "Felszerelt konyha", desc: "Mosogatógép, Nespresso, air fryer" }, en: { title: "Fully equipped kitchen", desc: "Dishwasher, Nespresso, air fryer" } },
