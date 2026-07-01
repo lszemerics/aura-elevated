@@ -161,8 +161,8 @@ export const translations = {
     },
     cards: [
       {
-        hu: { title: "Érkezés és távozás", items: ["Érkezés: 16:00 órától", "Távozás: 11:00 óráig", "Késői távozás / korai érkezés: előzetes egyeztetéssel lehetséges", "Érkezéskor ellenőrizzék a ház állapotát, jelezzék az esetleges hibákat"] },
-        en: { title: "Check-in & Check-out", items: ["Check-in: from 4:00 PM", "Check-out: by 11:00 PM", "Late check-out / early check-in: available upon prior arrangement", "Please inspect the property on arrival and report any issues"] },
+        hu: { title: "Érkezés és távozás", items: ["Érkezés: 16:00 órától", "Távozás: 10:00 óráig", "Késői távozás / korai érkezés: előzetes egyeztetéssel lehetséges", "Érkezéskor ellenőrizzék a ház állapotát, jelezzék az esetleges hibákat"] },
+        en: { title: "Check-in & Check-out", items: ["Check-in: from 4:00 PM", "Check-out: by 10:00 PM", "Late check-out / early check-in: available upon prior arrangement", "Please inspect the property on arrival and report any issues"] },
       },
       {
         hu: { title: "Kulcsok", items: ["A kulcs elvesztése esetén a zárcsere költsége a vendéget terheli", "Távozáskor a kulcsokat a megbeszélt helyen kell hagyni"] },
