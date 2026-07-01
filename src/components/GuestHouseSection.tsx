@@ -6,31 +6,35 @@ import { Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame, Ban
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-// Az első helyre beszúrtuk a Banknote (Ár) ikont
 const featureIcons = [Banknote, Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame];
 
 const GuestHouseSection = () => {
   const lang = useLang();
   const t = translations.house;
 
-  // Összeállítjuk a megjelenítendő elemek listáját
+  // Összeállítjuk a tiszta adatlistát (helyőrzők nélkül)
   let displayFeatures = [];
 
-  // 1. Első lépésként manuálisan beszúrjuk az ÁR kártyát a legelső helyre
+  // 1. Ár kártya beszúrása legelőre
   displayFeatures.push({
-    hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház (Újévkor egyedi ár)" },
-    en: { title: "PRICE", desc: "160 000 HUF / night / entire house (Custom price for New Year)" }
+    hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház\n(Újévkor egyedi ár)" },
+    en: { title: "PRICE", desc: "160 000 HUF / night / entire house\n(Custom price for New Year)" }
   });
 
-  // 2. Utána hozzáfűzzük a translations fájlból jövő alapértelmezett elemeket
+  // 2. Alapértelmezett elemek hozzáadása
   if (t.features && Array.isArray(t.features)) {
-    displayFeatures = [...displayFeatures, ...t.features];
+    // Kiszűrjük az esetlegesen ott maradt árat, hogy ne duplikálódjon
+    const baseFeatures = t.features.filter(f => {
+      const title = (f[lang] || f).title?.toUpperCase();
+      return title !== "ÁR" && title !== "PRICE";
+    });
+    displayFeatures = [...displayFeatures, ...baseFeatures];
   }
 
-  // 3. Biztonsági ellenőrzés: ha a Szauna még nem lenne benne a translations.ts-ben, manuálisan rátesszük a végére
+  // 3. Szauna biztonsági ellenőrzése
   const hasSauna = displayFeatures.some(f => {
-    const data = f[lang] || f;
-    return data.title?.toUpperCase() === "SZAUNA" || data.title?.toUpperCase() === "SAUNA";
+    const title = (f[lang] || f).title?.toUpperCase();
+    return title === "SZAUNA" || title === "SAUNA";
   });
 
   if (!hasSauna) {
@@ -38,12 +42,6 @@ const GuestHouseSection = () => {
       hu: { title: "SZAUNA", desc: "6 fő részére" },
       en: { title: "SAUNA", desc: "For 6 people" }
     });
-  }
-
-  // 4. PRÉMIUM VIZUÁLIS EGYENSÚLY: 10 elemed van, de 4 oszlopos rácsban dolgozunk (3x4 = 12 elem kell).
-  // Feltöltjük üres, minimalista placeholder kártyákkal a rács végét, hogy ne legyen aszimmetrikus törés.
-  while (displayFeatures.length < 12) {
-    displayFeatures.push({ isPlaceholder: true });
   }
 
   return (
@@ -66,26 +64,21 @@ const GuestHouseSection = () => {
         </p>
       </div>
 
-      {/* Feature Grid - Újra 4 oszlopos (md:grid-cols-4) a tökéletes 12-es mátrix elrendezésért */}
-      <div className="container mx-auto px-6 pb-24">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+      {/* JAVÍTOTT FEATURE GRID: Flexbox alapú elrendezés, ami asztali nézetben középre rendezi a csonka sorokat */}
+      <div className="container mx-auto px-6 pb-24 max-w-5xl">
+        <div className="flex flex-wrap justify-center gap-4">
           {displayFeatures.map((f, i) => {
-            // Ha ez egy üres dizájn-helyörző kártya a szimmetria kedvéért
-            if (f.isPlaceholder) {
-              return (
-                <div key={`space-${i}`} className="hidden md:block p-6 bg-card/10 border border-border/20 opacity-30 pointer-events-none" />
-              );
-            }
-
             const Icon = featureIcons[i];
             const data = f[lang] || f;
             
             return (
-              <div key={i} className="text-center p-6 bg-card border border-border hover:border-primary/30 transition-all duration-300 group flex flex-col justify-center items-center min-h-[140px]">
+              <div 
+                key={i} 
+                className="text-center p-6 bg-card border border-border hover:border-primary/30 transition-all duration-300 group flex flex-col justify-center items-center min-h-[140px] w-[calc(50%-8px)] md:w-[calc(25%-12px)]"
+              >
                 {Icon && <Icon className="w-5 h-5 mx-auto mb-3 text-primary group-hover:scale-110 transition-transform" strokeWidth={1.5} />}
                 <h3 className="font-body text-xs font-semibold tracking-wider uppercase text-foreground mb-1">{data.title}</h3>
                 
-                {/* Sortörések és zárójelek formázása az árhoz */}
                 <p className="font-body text-[11px] text-muted-foreground whitespace-pre-line max-w-[180px] mx-auto leading-normal">
                   {data.desc}
                 </p>
