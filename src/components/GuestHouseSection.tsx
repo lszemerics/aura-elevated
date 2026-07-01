@@ -2,11 +2,12 @@ import { useState } from "react";
 import interiorLiving from "@/assets/aura-vendeghaz-living.jpg";
 import interiorAttic from "@/assets/aura-vendeghaz-attic.jpg";
 import gardenImg from "@/assets/aura-vendeghaz-garden.jpg";
-import { Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv } from "lucide-react";
+import { Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-const featureIcons = [Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv];
+// Bővítve a Flame (Szauna) ikonnal a tömb végén
+const featureIcons = [Bed, Snowflake, Baby, Trees, Wifi, Car, UtensilsCrossed, Tv, Flame];
 
 const GuestHouseSection = () => {
   const lang = useLang();
@@ -33,9 +34,9 @@ const GuestHouseSection = () => {
         </p>
       </div>
 
-      {/* Feature Grid - warm card style */}
+      {/* Feature Grid - Módosítva 3 oszloposra (md:grid-cols-3) a 9 elem egyensúlyáért */}
       <div className="container mx-auto px-6 pb-24">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-5xl mx-auto">
           {t.features.map((f, i) => {
             const Icon = featureIcons[i];
             const data = f[lang];
