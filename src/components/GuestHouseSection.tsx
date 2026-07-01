@@ -20,7 +20,7 @@ const GuestHouseSection = () => {
         </p>
         <h2 className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground mb-10">
           {pick(t.heading1, lang)}<br />
-          <em className="italic">{pick(t.heading2, lang)}</em>
+          <em className="font-display text-3xl md:text-5xl lg:text-6xl font-light leading-tight text-foreground mb-10">{pick(t.heading2, lang)}</em>
         </h2>
         <p className="font-body text-base md:text-lg text-muted-foreground leading-relaxed max-w-xl">
           {pick(t.intro, lang)}
