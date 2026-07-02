@@ -3,7 +3,7 @@ import { X, ChevronLeft, ChevronRight } from "lucide-react";
 import { useLang } from "@/lib/i18n";
 import { translations, pick } from "@/lib/translations";
 
-// --- Importok maradnak ---
+// --- MEGLÉVŐ JÓ IMPORTOK ---
 import heroHouse from "@/assets/aura-vendeghaz.jpg";
 import galleryExterior1 from "@/assets/aura-vendeghaz-e1.jpg";
 import galleryExterior2 from "@/assets/aura-vendeghaz-e2.jpg";
@@ -20,27 +20,32 @@ import galleryLiving2 from "@/assets/aura-vendeghaz-l2.jpg";
 import galleryLiving4 from "@/assets/aura-vendeghaz-l4.jpg";
 import galleryBathroom1 from "@/assets/aura-vendeghaz-wc-1.jpg";
 import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg";
-import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg.asset.json";
-import koz13 from "@/assets/aura-vendeghaz-koz_13.jpg.asset.json";
-import koz14 from "@/assets/aura-vendeghaz-koz_14.jpg.asset.json";
-import koz15 from "@/assets/aura-vendeghaz-koz_15.jpg.asset.json";
-import koz16 from "@/assets/aura-vendeghaz-koz_16.jpg.asset.json";
-import koz1 from "@/assets/aura-vendeghaz-koz_1.jpg.asset.json";
-import koz10 from "@/assets/aura-vendeghaz-koz_10.jpg.asset.json";
-import koz3 from "@/assets/aura-vendeghaz-koz_3.jpg.asset.json";
-import koz11 from "@/assets/aura-vendeghaz-koz_11.jpg.asset.json";
-import koz5 from "@/assets/aura-vendeghaz-koz_5.jpg.asset.json";
-import koz6 from "@/assets/aura-vendeghaz-koz_6.jpg.asset.json";
-import koz7 from "@/assets/aura-vendeghaz-koz_7.jpg.asset.json";
-import koz8 from "@/assets/aura-vendeghaz-koz_8.jpg.asset.json";
-import koz9 from "@/assets/aura-vendeghaz-koz_9.PNG.asset.json";
-import koz2 from "@/assets/aura-vendeghaz-koz_2.JPG.asset.json";
-import koz4 from "@/assets/aura-vendeghaz-koz_4.jpg.asset.json";
-import deliSzoba1 from "@/assets/aura-vendeghaz-deli_szoba_1.jpg.asset.json";
-import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg.asset.json";
+
+// --- JAVÍTOTT IMPORTOK: Közvetlenül a képeket importáljuk, NEM a .asset.json-t! ---
+import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg";
+import koz13 from "@/assets/aura-vendeghaz-koz_13.jpg";
+import koz14 from "@/assets/aura-vendeghaz-koz_14.jpg";
+import koz15 from "@/assets/aura-vendeghaz-koz_15.jpg";
+import koz16 from "@/assets/aura-vendeghaz-koz_16.jpg";
+import koz1 from "@/assets/aura-vendeghaz-koz_1.jpg";
+import koz10 from "@/assets/aura-vendeghaz-koz_10.jpg";
+import koz3 from "@/assets/aura-vendeghaz-koz_3.jpg";
+import koz11 from "@/assets/aura-vendeghaz-koz_11.jpg";
+import koz5 from "@/assets/aura-vendeghaz-koz_5.jpg";
+import koz6 from "@/assets/aura-vendeghaz-koz_6.jpg";
+import koz7 from "@/assets/aura-vendeghaz-koz_7.jpg";
+import koz8 from "@/assets/aura-vendeghaz-koz_8.jpg";
+import koz4 from "@/assets/aura-vendeghaz-koz_4.jpg";
+
+// Kisebb-nagyobb betűérzékenység javítása a kiterjesztéseknél a biztonság kedvéért:
+import koz9 from "@/assets/aura-vendeghaz-koz_9.png";
+import koz2 from "@/assets/aura-vendeghaz-koz_2.jpg";
+import deliSzoba1 from "@/assets/aura-vendeghaz-deli_szoba_1.jpg";
+import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg";
 
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 
+// Tiszta, közvetlen string hivatkozások a tömbben (.url és .src nélkül)
 const imageSources = [
   { src: heroHouse, category: "exterior" as const },
   { src: galleryExterior1, category: "exterior" as const },
@@ -52,28 +57,28 @@ const imageSources = [
   { src: interiorAttic, category: "living" as const },
   { src: galleryLiving2, category: "living" as const },
   { src: galleryLiving4, category: "living" as const },
-  { src: koz12.url, category: "living" as const },
-  { src: koz13.url, category: "living" as const },
-  { src: koz14.url, category: "living" as const },
-  { src: koz15.url, category: "living" as const },
-  { src: koz16.url, category: "living" as const },
-  { src: koz1.url, category: "living" as const },
-  { src: koz10.url, category: "living" as const },
-  { src: koz3.url, category: "living" as const },
-  { src: koz11.url, category: "living" as const },
-  { src: koz5.url, category: "living" as const },
-  { src: koz6.url, category: "living" as const },
-  { src: koz7.url, category: "living" as const },
-  { src: koz8.url, category: "living" as const },
-  { src: koz9.url, category: "living" as const },
-  { src: koz2.url, category: "living" as const },
-  { src: koz4.url, category: "living" as const },
+  { src: koz12, category: "living" as const },
+  { src: koz13, category: "living" as const },
+  { src: koz14, category: "living" as const },
+  { src: koz15, category: "living" as const },
+  { src: koz16, category: "living" as const },
+  { src: koz1, category: "living" as const },
+  { src: koz10, category: "living" as const },
+  { src: koz3, category: "living" as const },
+  { src: koz11, category: "living" as const },
+  { src: koz5, category: "living" as const },
+  { src: koz6, category: "living" as const },
+  { src: koz7, category: "living" as const },
+  { src: koz8, category: "living" as const },
+  { src: koz9, category: "living" as const },
+  { src: koz2, category: "living" as const },
+  { src: koz4, category: "living" as const },
   { src: galleryBedroom1, category: "rooms" as const },
   { src: galleryBedroom2, category: "rooms" as const },
   { src: galleryBedroom3, category: "rooms" as const },
   { src: galleryBedroom4, category: "rooms" as const },
-  { src: deliSzoba1.url, category: "rooms" as const },
-  { src: deliSzoba2.url, category: "rooms" as const },
+  { src: deliSzoba1, category: "rooms" as const },
+  { src: deliSzoba2, category: "rooms" as const },
   { src: galleryBathroom1, category: "bathroom" as const },
   { src: galleryBathroom2, category: "bathroom" as const },
 ];
@@ -88,12 +93,11 @@ const GallerySection = () => {
 
   const images = useMemo(() => imageSources.map((img, i) => ({
     ...img,
-    alt: pick(t.imageAlts[i], lang),
+    alt: pick(t.imageAlts[i], lang) || "Aura Vendégház",
   })), [lang, t.imageAlts]);
 
   const filtered = activeCategory === "all" ? images : images.filter((img) => img.category === activeCategory);
 
-  // Dinamikus elrendezés segéd (Desktopra)
   const getDesktopSpan = (index: number) => {
     const patterns = [
       "md:col-span-8 md:h-[500px]", 
@@ -134,7 +138,7 @@ const GallerySection = () => {
              {pick(t.title, lang)}
           </h2>
           
-          {/* Szűrők - Mobilon görgethető sáv */}
+          {/* Filters */}
           <div className="flex overflow-x-auto md:overflow-visible no-scrollbar -mx-6 px-6 md:mx-0 md:px-0 gap-6 border-b border-gray-100 pb-4">
             {categoryKeys.map((key) => (
               <button
@@ -150,16 +154,16 @@ const GallerySection = () => {
           </div>
         </div>
 
-        {/* Galéria Grid - Mobilon biztonságos, Desktopon modern */}
+        {/* Galéria Grid */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
           {filtered.map((img, i) => (
             <div
-              key={typeof img.src === 'string' ? img.src : (img.src as any).src}
+              key={img.src}
               className={`relative overflow-hidden cursor-pointer group h-[300px] md:h-auto ${getDesktopSpan(i)}`}
               onClick={() => openLightbox(i)}
             >
               <img
-                src={typeof img.src === 'string' ? img.src : (img.src as any).src}
+                src={img.src}
                 alt={img.alt}
                 className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                 loading="lazy"
@@ -170,9 +174,9 @@ const GallerySection = () => {
         </div>
       </div>
 
-      {/* Lightbox - Megtartva az elegáns fehér hátteret */}
+      {/* Lightbox */}
       {lightboxIndex !== null && (
-        <div className="fixed inset-0 z-[100] bg-white/fb backdrop-blur-xl flex items-center justify-center p-4" onClick={closeLightbox}>
+        <div className="fixed inset-0 z-[100] bg-white backdrop-blur-xl flex items-center justify-center p-4" onClick={closeLightbox}>
           <button className="absolute top-6 right-6 p-2 text-black transition-transform hover:rotate-90">
             <X className="w-8 h-8" strokeWidth={1} />
           </button>
@@ -182,7 +186,7 @@ const GallerySection = () => {
           </button>
 
           <img
-            src={typeof filtered[lightboxIndex].src === 'string' ? filtered[lightboxIndex].src : (filtered[lightboxIndex].src as any).src}
+            src={filtered[lightboxIndex].src}
             alt={filtered[lightboxIndex].alt}
             className="max-w-full max-h-[85vh] object-contain shadow-2xl rounded-sm"
             onClick={(e) => e.stopPropagation()}
