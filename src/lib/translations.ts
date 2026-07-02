@@ -132,8 +132,9 @@ export const translations = {
       rooms: { hu: "Szobák", en: "Bedrooms" },
       bathroom: { hu: "Fürdőszobák", en: "Bathrooms" },
     },
+    // TELJESEN ÁTRENDEZETT ÉS SZINKRONIZÁLT LEÍRÁSOK TÖMBJE
     imageAlts: [
-      { hu: "A house kívülről – homlokzat", en: "House exterior – facade" },
+      { hu: "A ház kívülről – homlokzat", en: "House exterior – facade" },
       { hu: "Kert – sziklakert felülről", en: "Garden – rock garden from above" },
       { hu: "Kert – ösvény nyáron", en: "Garden – pathway in summer" },
       { hu: "Kert – ösvény és sziklák", en: "Garden – pathway and rocks" },
@@ -143,12 +144,15 @@ export const translations = {
       { hu: "Tetőtér – vetítő és biliárd", en: "Loft – projector and billiards" },
       { hu: "Nappali – étkezőből nézve", en: "Living room – from dining area" },
       { hu: "Tetőtér – pihenőzóna", en: "Loft – lounge area" },
+      
+      // 1. Blokkrész: Közösségi terek (12, 13, 14, 15, 16)
       { hu: "Konyha és étkező", en: "Kitchen and dining area" },
       { hu: "Nappali – étkezővel", en: "Living area with dining" },
       { hu: "Étkezőasztal", en: "Dining table" },
       { hu: "Konyha – munkapult", en: "Kitchen – countertop" },
       { hu: "Konyha – készülékek", en: "Kitchen – appliances" },
-      { hu: "Tetőtér – nappali és biliárd", en: "Loft – lounge and billiards" },
+      
+      // 2. Blokkrész: Közösségi terek (5, 6, 7, 8, 9, 2, 4)
       { hu: "Tetőtér – pihenő ágyakkal", en: "Loft – lounge with beds" },
       { hu: "Tetőtér – vetítővászon", en: "Loft – projector screen" },
       { hu: "Tetőtér – extra ágyak", en: "Loft – extra beds" },
@@ -156,15 +160,24 @@ export const translations = {
       { hu: "Kerti pergola – étkezőasztal és szauna", en: "Garden pergola – dining table and sauna" },
       { hu: "Kert – pergola és napozóágyak", en: "Garden – pergola and sun loungers" },
       { hu: "Terasz – hintaágy", en: "Terrace – porch swing" },
+      
+      // 3. Blokkrész: Közösségi terek (1, 10, 3, 11)
+      { hu: "Tetőtér – nappali és biliárd", en: "Loft – lounge and billiards" },
       { hu: "Grillezés a kertben", en: "Grilling in the garden" },
       { hu: "Bogrács a teraszon", en: "Cauldron cooking on the terrace" },
       { hu: "A ház a kertből – grillel", en: "House from the garden – with grill" },
+      
+      // Szobák alapértelmezett szekció
       { hu: "Hálószoba – kék fal, francia ágy", en: "Bedroom – teal accent wall, king bed" },
       { hu: "Hálószoba – mustár függönyök", en: "Bedroom – mustard curtains" },
       { hu: "Hálószoba – zöld fal, kanapéágy", en: "Bedroom – green wall, sofa bed" },
       { hu: "Hálószoba – zöld fal, dupla ágy", en: "Bedroom – green wall, double bed" },
+      
+      // Déli hálószobák
       { hu: "Déli hálószoba – zöld fal, kerti kilátás", en: "South bedroom – green wall, garden view" },
       { hu: "Déli hálószoba – francia ágy", en: "South bedroom – king bed" },
+      
+      // Fürdőszobák
       { hu: "Fürdőszoba – zuhanyzó", en: "Bathroom – walk-in shower" },
       { hu: "Fürdőszoba – kád és mosógép", en: "Bathroom – bathtub and washing machine" },
     ],
@@ -207,7 +220,7 @@ export const translations = {
         en: { title: "Barbecue & open fire", items: ["Barbecuing is only permitted in the designated outdoor area", "Open flames are strictly prohibited indoors", "Never leave a fire or grill unattended", "In the event of a fire ban, only grilling and gas-powered cauldron cooking are permitted"] },
       },
       {
-        hu: { title: "Szemétkezelés", items: ["Háztartási hulladékot a kijelölt kukákban helyezzék el", "Papír, műanyag, üveg és fém különválogatása kötelező", "Távozáskor a szemetet kérjük kivinni"] },
+        hu: { title: "Szemétkezelés", items: ["Háztartási hulladékog a kijelölt kukákban helyezzék el", "Papír, műanyag, üveg és fém különválogatása kötelező", "Távozáskor a szemetet kérjük kivinni"] },
         en: { title: "Waste disposal", items: ["Place household waste in the designated bins", "Recycling (paper, plastic, glass, metal) is mandatory", "Please dispose of all rubbish upon departure"] },
       },
       {
