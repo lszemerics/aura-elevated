@@ -20,6 +20,15 @@ import galleryLiving2 from "@/assets/aura-vendeghaz-l2.jpg";
 import galleryLiving4 from "@/assets/aura-vendeghaz-l4.jpg";
 import galleryBathroom1 from "@/assets/aura-vendeghaz-wc-1.jpg";
 import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg";
+import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg.asset.json";
+import koz13 from "@/assets/aura-vendeghaz-koz_13.jpg.asset.json";
+import koz14 from "@/assets/aura-vendeghaz-koz_14.jpg.asset.json";
+import koz15 from "@/assets/aura-vendeghaz-koz_15.jpg.asset.json";
+import koz16 from "@/assets/aura-vendeghaz-koz_16.jpg.asset.json";
+import koz1 from "@/assets/aura-vendeghaz-koz_1.jpg.asset.json";
+import koz10 from "@/assets/aura-vendeghaz-koz_10.jpg.asset.json";
+import koz3 from "@/assets/aura-vendeghaz-koz_3.jpg.asset.json";
+import koz11 from "@/assets/aura-vendeghaz-koz_11.jpg.asset.json";
 
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 
@@ -34,6 +43,15 @@ const imageSources = [
   { src: interiorAttic, category: "living" as const },
   { src: galleryLiving2, category: "living" as const },
   { src: galleryLiving4, category: "living" as const },
+  { src: koz12.url, category: "living" as const },
+  { src: koz13.url, category: "living" as const },
+  { src: koz14.url, category: "living" as const },
+  { src: koz15.url, category: "living" as const },
+  { src: koz16.url, category: "living" as const },
+  { src: koz1.url, category: "living" as const },
+  { src: koz10.url, category: "living" as const },
+  { src: koz3.url, category: "living" as const },
+  { src: koz11.url, category: "living" as const },
   { src: galleryBedroom1, category: "rooms" as const },
   { src: galleryBedroom2, category: "rooms" as const },
   { src: galleryBedroom3, category: "rooms" as const },
