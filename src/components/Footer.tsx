@@ -62,7 +62,7 @@ const Footer = () => {
               <p className="font-bold text-background/60 uppercase mb-3 flex items-center gap-2">
                 <Scale className="w-3 h-3" /> Jogorvoslat & GDPR
               </p>
-              <p>Panasz esetén: aura.vofi@gmail.com / +36 20 509 8419</p>
+              <p>Panasz esetén: aura.vofi@gmail.com / +36 30 544 8908</p>
               <p><strong>Adatvédelem:</strong> Az oldal sütiket (cookie) használ. Személyes adatgyűjtés itt nem történik; az adatkezelés a foglalási platformok szabályzata szerint alakul.</p>
             </div>
           </div>
