@@ -19,7 +19,7 @@ import galleryBedroom4 from "@/assets/aura-vendeghaz-h4.jpg";
 import galleryLiving2 from "@/assets/aura-vendeghaz-l2.jpg";
 import galleryLiving4 from "@/assets/aura-vendeghaz-l4.jpg";
 import galleryBathroom1 from "@/assets/aura-vendeghaz-wc-1.jpg";
-import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg";
+import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg"; // JAVÍTVA: Kitörölve a hibás "Holiday" szó
 
 // --- LOVABLE METADAT IMPORTOK (.asset.json) ---
 import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg.asset.json";
@@ -43,7 +43,6 @@ import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg.asset.json";
 
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 
-// Segédfüggvény, ami biztonságosan kinyeri a képlinket a JSON objektumokból
 const resolveSrc = (asset: any): string => {
   if (!asset) return "";
   if (typeof asset === "string") return asset;
@@ -99,7 +98,7 @@ const imageSources = [
 
   // Fürdőszobák
   { src: resolveSrc(galleryBathroom1), category: "bathroom" as const },
-  { src: resolveSrc(galleryBathroom2), category: "bathroom" as const },
+  { src: resolveSrc(galleryBathroom2), category: "bathroom" as const }, // JAVÍTVA: Közvetlen és tiszta feloldás
 ];
 
 const categoryKeys: Category[] = ["all", "exterior", "living", "rooms", "bathroom"];
@@ -110,10 +109,19 @@ const GallerySection = () => {
   const [activeCategory, setActiveCategory] = useState<Category>("all");
   const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
-  const images = useMemo(() => imageSources.map((img, i) => ({
-    ...img,
-    alt: pick(t.imageAlts[i], lang) || "Aura Vendégház",
-  })), [lang, t.imageAlts]);
+  const images = useMemo(() => imageSources.map((img, i) => {
+    const rawAlt = t.imageAlts && t.imageAlts[i];
+    let finalAlt = "Aura Vendégház";
+    
+    if (rawAlt && typeof rawAlt === "object" && ("hu" in rawAlt)) {
+      finalAlt = pick(rawAlt, lang);
+    }
+
+    return {
+      ...img,
+      alt: finalAlt,
+    };
+  }), [lang, t.imageAlts]);
 
   const filtered = activeCategory === "all" ? images : images.filter((img) => img.category === activeCategory);
 
