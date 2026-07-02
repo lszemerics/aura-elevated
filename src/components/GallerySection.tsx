@@ -19,7 +19,7 @@ import galleryBedroom4 from "@/assets/aura-vendeghaz-h4.jpg";
 import galleryLiving2 from "@/assets/aura-vendeghaz-l2.jpg";
 import galleryLiving4 from "@/assets/aura-vendeghaz-l4.jpg";
 import galleryBathroom1 from "@/assets/aura-vendeghaz-wc-1.jpg";
-import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg"; // JAVÍTVA: Kitörölve a hibás "Holiday" szó
+import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg";
 
 // --- LOVABLE METADAT IMPORTOK (.asset.json) ---
 import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg.asset.json";
@@ -43,12 +43,17 @@ import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg.asset.json";
 
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 
+// GOLYÓÁLLÓ INTELIGENS FELOLDÓ: Minden lehetséges Lovable/Vite JSON struktúrát kibont stringé
 const resolveSrc = (asset: any): string => {
   if (!asset) return "";
   if (typeof asset === "string") return asset;
   if (asset.url) return asset.url;
   if (asset.src) return asset.src;
-  if (asset.default) return typeof asset.default === "string" ? asset.default : asset.default.url || asset.default.src || "";
+  if (asset.filePath) return asset.filePath;
+  if (asset.default) {
+    if (typeof asset.default === "string") return asset.default;
+    return asset.default.url || asset.default.src || asset.default.filePath || "";
+  }
   return "";
 };
 
@@ -98,7 +103,7 @@ const imageSources = [
 
   // Fürdőszobák
   { src: resolveSrc(galleryBathroom1), category: "bathroom" as const },
-  { src: resolveSrc(galleryBathroom2), category: "bathroom" as const }, // JAVÍTVA: Közvetlen és tiszta feloldás
+  { src: resolveSrc(galleryBathroom2), category: "bathroom" as const },
 ];
 
 const categoryKeys: Category[] = ["all", "exterior", "living", "rooms", "bathroom"];
@@ -181,30 +186,34 @@ const GallerySection = () => {
           </div>
         </div>
 
-        {/* Galéria Grid */}
+        {/* Galéria Grid - Ha a kép forrása üres vagy nem valid string, meg sem jelenik a doboz */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8">
-          {filtered.map((img, i) => (
-            <div
-              key={`${img.src}-${i}`}
-              className={`relative overflow-hidden cursor-pointer group h-[300px] md:h-auto ${getDesktopSpan(i)}`}
-              onClick={() => openLightbox(i)}
-            >
-              {img.src && (
+          {filtered.map((img, i) => {
+            if (!img.src || typeof img.src !== "string" || img.src.trim() === "") {
+              return null; 
+            }
+
+            return (
+              <div
+                key={`${img.src}-${i}`}
+                className={`relative overflow-hidden cursor-pointer group h-[300px] md:h-auto ${getDesktopSpan(i)}`}
+                onClick={() => openLightbox(i)}
+              >
                 <img
                   src={img.src}
                   alt={img.alt}
                   className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105"
                   loading="lazy"
                 />
-              )}
-              <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
-            </div>
-          ))}
+                <div className="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors duration-500" />
+              </div>
+            );
+          })}
         </div>
       </div>
 
       {/* Lightbox */}
-      {lightboxIndex !== null && (
+      {lightboxIndex !== null && filtered[lightboxIndex] && filtered[lightboxIndex].src && (
         <div className="fixed inset-0 z-[100] bg-white backdrop-blur-xl flex items-center justify-center p-4" onClick={closeLightbox}>
           <button className="absolute top-6 right-6 p-2 text-black transition-transform hover:rotate-90">
             <X className="w-8 h-8" strokeWidth={1} />
