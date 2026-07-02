@@ -21,25 +21,25 @@ import galleryLiving4 from "@/assets/aura-vendeghaz-l4.jpg";
 import galleryBathroom1 from "@/assets/aura-vendeghaz-wc-1.jpg";
 import galleryBathroom2 from "@/assets/aura-vendeghaz-wc-2.jpg";
 
-// --- LOVABLE METADAT IMPORTOK (.asset.json) ---
-import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg.asset.json";
-import koz13 from "@/assets/aura-vendeghaz-koz_13.jpg.asset.json";
-import koz14 from "@/assets/aura-vendeghaz-koz_14.jpg.asset.json";
-import koz15 from "@/assets/aura-vendeghaz-koz_15.jpg.asset.json";
-import koz16 from "@/assets/aura-vendeghaz-koz_16.jpg.asset.json";
-import koz1 from "@/assets/aura-vendeghaz-koz_1.jpg.asset.json";
-import koz10 from "@/assets/aura-vendeghaz-koz_10.jpg.asset.json";
-import koz3 from "@/assets/aura-vendeghaz-koz_3.jpg.asset.json";
-import koz11 from "@/assets/aura-vendeghaz-koz_11.jpg.asset.json";
-import koz5 from "@/assets/aura-vendeghaz-koz_5.jpg.asset.json";
-import koz6 from "@/assets/aura-vendeghaz-koz_6.jpg.asset.json";
-import koz7 from "@/assets/aura-vendeghaz-koz_7.jpg.asset.json";
-import koz8 from "@/assets/aura-vendeghaz-koz_8.jpg.asset.json";
-import koz4 from "@/assets/aura-vendeghaz-koz_4.jpg.asset.json";
-import koz9 from "@/assets/aura-vendeghaz-koz_9.PNG.asset.json";
-import koz2 from "@/assets/aura-vendeghaz-koz_2.JPG.asset.json";
-import deliSzoba1 from "@/assets/aura-vendeghaz-deli_szoba_1.jpg.asset.json";
-import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg.asset.json";
+// --- KÖZÖSSÉGI ÉS SZOBA STATIKUS IMPORTOK ---
+import koz12 from "@/assets/aura-vendeghaz-koz_12.jpg";
+import koz13 from "@/assets/aura-vendeghaz-koz_13.jpg";
+import koz14 from "@/assets/aura-vendeghaz-koz_14.jpg";
+import koz15 from "@/assets/aura-vendeghaz-koz_15.jpg";
+import koz16 from "@/assets/aura-vendeghaz-koz_16.jpg";
+import koz1 from "@/assets/aura-vendeghaz-koz_1.jpg";
+import koz10 from "@/assets/aura-vendeghaz-koz_10.jpg";
+import koz3 from "@/assets/aura-vendeghaz-koz_3.jpg";
+import koz11 from "@/assets/aura-vendeghaz-koz_11.jpg";
+import koz5 from "@/assets/aura-vendeghaz-koz_5.jpg";
+import koz6 from "@/assets/aura-vendeghaz-koz_6.jpg";
+import koz7 from "@/assets/aura-vendeghaz-koz_7.jpg";
+import koz8 from "@/assets/aura-vendeghaz-koz_8.jpg";
+import koz4 from "@/assets/aura-vendeghaz-koz_4.jpg";
+import koz9 from "@/assets/aura-vendeghaz-koz_9.PNG";
+import koz2 from "@/assets/aura-vendeghaz-koz_2.JPG";
+import deliSzoba1 from "@/assets/aura-vendeghaz-deli_szoba_1.jpg";
+import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg";
 
 type Category = "all" | "exterior" | "living" | "rooms" | "bathroom";
 
