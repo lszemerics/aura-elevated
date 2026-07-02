@@ -237,7 +237,7 @@ export const translations = {
       },
       {
         hu: { title: "Kapcsolattartás", items: ["Telefon: +36 30 544 8908", "E-mail: aura.vofi@gmail.com", "Probléma, kérdés esetén keressék a házigazdát"] },
-        en: { title: "Contact", items: ["Phone: +36 20 509 8419", "Email: aura.vofi@gmail.com", "Please contact the host for any questions or issues"] },
+        en: { title: "Contact", items: ["Phone: +36 30 544 8908", "Email: aura.vofi@gmail.com", "Please contact the host for any questions or issues"] },
       },
     ],
     floorplansLabel: { hu: "Alaprajzok", en: "Floor Plans" },
