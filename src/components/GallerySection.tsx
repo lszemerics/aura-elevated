@@ -36,8 +36,8 @@ import koz6 from "@/assets/aura-vendeghaz-koz_6.jpg";
 import koz7 from "@/assets/aura-vendeghaz-koz_7.jpg";
 import koz8 from "@/assets/aura-vendeghaz-koz_8.jpg";
 import koz4 from "@/assets/aura-vendeghaz-koz_4.jpg";
-import koz9 from "@/assets/aura-vendeghaz-koz_9.PNG";
-import koz2 from "@/assets/aura-vendeghaz-koz_2.JPG";
+import koz9 from "@/assets/aura-vendeghaz-koz_9.png";
+import koz2 from "@/assets/aura-vendeghaz-koz_2.jpg";
 import deliSzoba1 from "@/assets/aura-vendeghaz-deli_szoba_1.jpg";
 import deliSzoba2 from "@/assets/aura-vendeghaz-deli_szoba_2.jpg";
 
