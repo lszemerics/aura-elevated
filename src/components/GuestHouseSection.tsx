@@ -25,7 +25,7 @@ const GuestHouseSection = () => {
   if (t.features && Array.isArray(t.features)) {
     // Kiszűrjük az esetlegesen ott maradt árat, hogy ne duplikálódjon
     const baseFeatures = t.features.filter(f => {
-      const title = (f[lang] || f).title?.toUpperCase();
+      const title = ((f as any)[lang] || (f as any)).title?.toUpperCase();
       return title !== "ÁR" && title !== "PRICE";
     });
     displayFeatures = [...displayFeatures, ...baseFeatures];
@@ -33,7 +33,7 @@ const GuestHouseSection = () => {
 
   // 3. Szauna biztonsági ellenőrzése
   const hasSauna = displayFeatures.some(f => {
-    const title = (f[lang] || f).title?.toUpperCase();
+    const title = ((f as any)[lang] || (f as any)).title?.toUpperCase();
     return title === "SZAUNA" || title === "SAUNA";
   });
 
