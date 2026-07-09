@@ -28,8 +28,8 @@ export const translations = {
     },
     features: [
       { 
-        hu: { title: "ÁR", desc: "160 000 Ft / éj / teljes ház\n(16 fő felett és újévkor egyedi ár)" }, 
-        en: { title: "PRICE", desc: "160 000 HUF / night / entire house\n(Custom price for New Year or above 16 person)" } 
+        hu: { title: "ÁR", desc: "175 000 Ft / éj / teljes ház\n(16 fő felett és újévkor egyedi ár)" }, 
+        en: { title: "PRICE", desc: "175 000 HUF / night / entire house\n(Custom price for New Year or above 16 person)" } 
       }, // SIKERESEN HOZZÁADVA: Az Ár kártya lett a legelső elem
       { hu: { title: "4+1 szoba", desc: "14–16 fő részére, francia ágyak" }, en: { title: "4+1 rooms", desc: "For 14–16 guests, king-size beds" } },
       { hu: { title: "Klíma", desc: "Hűtő-fűtő klíma egész évben" }, en: { title: "Air conditioning", desc: "Heating & cooling all year round" } },
